@@ -32,6 +32,9 @@ for s in sub_lines:
     start = re.search(u'begin\="([0-9]*)', s).group(1)
     end = re.search(u'end\="([0-9]*)', s).group(1)
     content = re.search(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>', s).group(1)
+    alt_content = re.search(u'<span style=\"style_0\">(.*)</span>', s)
+    if alt_content:  # some background text has additional styling
+        content = alt_content.group(1)
     prev_start = prev_time["start"]
     if (prev_start == start and prev_time["end"] == end) or not prev_start:
         # there may be multiple lines starting at the same time. This fixes it.
