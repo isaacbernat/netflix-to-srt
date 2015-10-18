@@ -1,8 +1,7 @@
 import codecs
 import re
 import math
-
-FILE_NAME = "sample.xml"
+import argparse
 
 
 def leading_zeros(value, digits=2):
@@ -56,9 +55,17 @@ def to_srt(text):
         for s in range(len(subs)))
     return u"\n".join(lines)
 
+filename = "sample.xml"
+help_text = "path to the {} file (defaults to {})"
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", "--input", type=str, default=filename,
+                    help=help_text.format("input", filename))
+parser.add_argument("-o", "--output", type=str, default=filename + ".srt",
+                    help=help_text.format("output", filename + ".srt"))
+a = parser.parse_args()
 
-with codecs.open(FILE_NAME, 'rb', "utf-8") as f:
+with codecs.open(a.input, 'rb', "utf-8") as f:
     text = f.read()
 
-with codecs.open(FILE_NAME + ".srt", 'wb', "utf-8") as f:
+with codecs.open(a.output, 'wb', "utf-8") as f:
     f.write(to_srt(text))
