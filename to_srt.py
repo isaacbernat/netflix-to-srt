@@ -20,6 +20,13 @@ def convert_time(raw_time):
 
 
 def to_srt(text):
+    def append_subs(start, end, prev_content):
+        subs.append({
+            "start_time": convert_time(start),
+            "end_time": convert_time(end),
+            "content": u"\n".join(prev_content),
+        })
+
     sub_lines = (l for l in text.split("\n") if l.startswith("<p begin="))
     subs = []
     prev_time = {"start": 0, "end": 0}
@@ -29,30 +36,23 @@ def to_srt(text):
     content_re = re.compile(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>')
     alt_content_re = re.compile(u'<span style=\"style_0\">(.*)</span>')
     for s in sub_lines:
-        start = re.search(start_re, s).group(1)
-        end = re.search(end_re, s).group(1)
         content = re.search(content_re, s).group(1)
         alt_content = re.search(alt_content_re, s)
         if alt_content:  # some background text has additional styling
             content = alt_content.group(1)
+
         prev_start = prev_time["start"]
+        start = re.search(start_re, s).group(1)
+        end = re.search(end_re, s).group(1)
         if (prev_start == start and prev_time["end"] == end) or not prev_start:
             # Fix for multiple lines starting at the same time
             prev_time = {"start": start, "end": end}
             prev_content.append(content)
             continue
-        subs.append({
-            "start_time": convert_time(prev_time["start"]),
-            "end_time": convert_time(prev_time["end"]),
-            "content": u"\n".join(prev_content),
-            })
+        append_subs(prev_time["start"], prev_time["end"], prev_content)
         prev_time = {"start": start, "end": end}
         prev_content = [content]
-    subs.append({
-        "start_time": convert_time(start),
-        "end_time": convert_time(end),
-        "content": u"\n".join(prev_content),
-    })
+    append_subs(start, end, prev_content)
 
     lines = (u"{}\n{} --> {}\n{}\n".format(
         s+1, subs[s]["start_time"], subs[s]["end_time"], subs[s]["content"])
