@@ -24,11 +24,15 @@ def to_srt(text):
     subs = []
     prev_time = {"start": 0, "end": 0}
     prev_content = []
+    start_re = re.compile(u'begin\="([0-9]*)')
+    end_re = re.compile(u'end\="([0-9]*)')
+    content_re = re.compile(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>')
+    alt_content_re = re.compile(u'<span style=\"style_0\">(.*)</span>')
     for s in sub_lines:
-        start = re.search(u'begin\="([0-9]*)', s).group(1)
-        end = re.search(u'end\="([0-9]*)', s).group(1)
-        content = re.search(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>', s).group(1)
-        alt_content = re.search(u'<span style=\"style_0\">(.*)</span>', s)
+        start = re.search(start_re, s).group(1)
+        end = re.search(end_re, s).group(1)
+        content = re.search(content_re, s).group(1)
+        alt_content = re.search(alt_content_re, s)
         if alt_content:  # some background text has additional styling
             content = alt_content.group(1)
         prev_start = prev_time["start"]
