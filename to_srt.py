@@ -14,7 +14,7 @@ def convert_time(raw_time):
     # only interested in milliseconds, let's drop the additional digits
     time_in_seconds = int(raw_time[:-7])
     second = leading_zeros(time_in_seconds % 60)
-    minute = leading_zeros(int(math.floor(time_in_seconds / 60)))
+    minute = leading_zeros(int(math.floor(time_in_seconds / 60)) % 60)
     hour = leading_zeros(int(math.floor(time_in_seconds / 3600)))
     return "{}:{}:{},{}".format(hour, minute, second, ms)
 
