@@ -52,7 +52,7 @@ def to_srt(text):
         append_subs(prev_time["start"], prev_time["end"], prev_content)
         prev_time = {"start": start, "end": end}
         prev_content = [content]
-    append_subs(start, end, prev_content)
+        append_subs(start, end, prev_content)
 
     lines = (u"{}\n{} --> {}\n{}\n".format(
         s+1, subs[s]["start_time"], subs[s]["end_time"], subs[s]["content"])
