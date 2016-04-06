@@ -20,23 +20,32 @@ def convert_time(raw_time):
 
 
 def to_srt(text):
-    def append_subs(start, end, prev_content):
+    def append_subs(start, end, prev_content, format_time):
         subs.append({
-            "start_time": convert_time(start),
-            "end_time": convert_time(end),
+            "start_time": convert_time(start) if format_time else start,
+            "end_time": convert_time(end) if format_time else end,
             "content": u"\n".join(prev_content),
         })
 
-    sub_lines = (l for l in text.split("\n") if l.startswith("<p begin="))
+    begin_re = re.compile(u"\s*<p begin=")
+    sub_lines = (l for l in text.split("\n") if re.search(begin_re, l))
     subs = []
     prev_time = {"start": 0, "end": 0}
     prev_content = []
-    start_re = re.compile(u'begin\="([0-9]*)')
-    end_re = re.compile(u'end\="([0-9]*)')
-    content_re = re.compile(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>')
+    start = end = ''
+    start_re = re.compile(u'begin\="([0-9:\.]*)')
+    end_re = re.compile(u'end\="([0-9:\.]*)')
+    # this regex was sometimes too strict. I hope the new one is never too lax
+    # content_re = re.compile(u'xml\:id\=\"subtitle[0-9]+\">(.*)</p>')
+    content_re = re.compile(u'\">(.*)</p>')
     alt_content_re = re.compile(u'<span style=\"style_0\">(.*)</span>')
+    br_re = re.compile(u'(<br\s*\/?>)+')
+    fmt_t = True
     for s in sub_lines:
         content = re.search(content_re, s).group(1)
+        br_tags = re.search(br_re, content)
+        if br_tags:
+            content = u"\n".join(content.split(br_tags.group()))
         alt_content = re.search(alt_content_re, s)
         if alt_content:  # some background text has additional styling
             content = alt_content.group(1)
@@ -44,15 +53,19 @@ def to_srt(text):
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
         end = re.search(end_re, s).group(1)
+        if len(start.split(":")) > 1:
+            fmt_t = False
+            start = start.replace(".", ",")
+            end = end.replace(".", ",")
         if (prev_start == start and prev_time["end"] == end) or not prev_start:
             # Fix for multiple lines starting at the same time
             prev_time = {"start": start, "end": end}
             prev_content.append(content)
             continue
-        append_subs(prev_time["start"], prev_time["end"], prev_content)
+        append_subs(prev_time["start"], prev_time["end"], prev_content, fmt_t)
         prev_time = {"start": start, "end": end}
         prev_content = [content]
-    append_subs(start, end, prev_content)
+    append_subs(start, end, prev_content, fmt_t)
 
     lines = (u"{}\n{} --> {}\n{}\n".format(
         s+1, subs[s]["start_time"], subs[s]["end_time"], subs[s]["content"])
