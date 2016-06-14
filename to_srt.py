@@ -49,9 +49,7 @@ def to_srt(text):
             content.append(alt_content.group(1))
             s = s.replace(alt_content.group(0), u'')
             alt_content = re.search(alt_content_re, s)
-
-        content = u"\n".join(content) if content\
-                  else re.search(content_re, s).group(1)
+        content = u"\n".join(content) + re.search(content_re, s).group(1)
         br_tags = re.search(br_re, content)
         if br_tags:
             content = u"\n".join(content.split(br_tags.group()))
@@ -74,7 +72,7 @@ def to_srt(text):
     append_subs(start, end, prev_content, fmt_t)
 
     lines = (u"{}\n{} --> {}\n{}\n".format(
-        s+1, subs[s]["start_time"], subs[s]["end_time"], subs[s]["content"])
+        s + 1, subs[s]["start_time"], subs[s]["end_time"], subs[s]["content"])
         for s in range(len(subs)))
     return u"\n".join(lines)
 
