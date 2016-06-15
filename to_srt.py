@@ -46,10 +46,10 @@ def to_srt(text):
         alt_content = re.search(alt_content_re, s)
         while (alt_content):  # background text may have additional styling.
             # background may also contain several `<span> </span>` groups
-            content.append(alt_content.group(1))
-            s = s.replace(alt_content.group(0), u'')
+            s = s.replace(alt_content.group(0), alt_content.group(1))
             alt_content = re.search(alt_content_re, s)
-        content = u"\n".join(content) + re.search(content_re, s).group(1)
+        content = re.search(content_re, s).group(1)
+
         br_tags = re.search(br_re, content)
         if br_tags:
             content = u"\n".join(content.split(br_tags.group()))
