@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tt xmlns:tt="http://www.w3.org/2006/10/ttaf1" xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" xmlns:ttp="http://www.w3.org/2006/10/ttaf1#parameter" xmlns:tts="http://www.w3.org/2006/10/ttaf1#styling" ttp:tickRate="10000000" ttp:timeBase="media" xmlns="http://www.w3.org/2006/10/ttaf1">
+<head use="dfxp-ls-sdh">
+<ttp:profile xmlns:ttp="http://www.w3.org/2006/10/ttaf1"/>
+</head>
+<body>
+<div xml:space="preserve">
+<p begin="0t" end="59989929t" xml:id="subtitle0">[upbeat music]</p>
+<p begin="326986660t" end="337326990t" xml:id="subtitle1">All right, Jim,</p>
+<p begin="337657320t" end="362321960t" xml:id="subtitle2">your quarterlies<br/>look very good.</p>
+<p begin="362652290t" end="383663280t" xml:id="subtitle3">How are things going<br/>at the library?</p>
+<p begin="383993610t" end="408658250t" xml:id="subtitle4">Oh, I told you.<br/>I couldn't close it, so...</p>
+<p begin="408988580t" end="443322879t" xml:id="subtitle5">So you've come<br/>to the master for guidance?</p>
+</div>
+</body>
+</tt>
