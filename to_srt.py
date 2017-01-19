@@ -10,6 +10,8 @@ def leading_zeros(value, digits=2):
 
 
 def convert_time(raw_time):
+    if int(raw_time) == 0:
+        return "{}:{}:{},{}".format(0,0,0,0)
     ms = leading_zeros(int(raw_time[:-4]) % 1000, 3)
     # only interested in milliseconds, let's drop the additional digits
     time_in_seconds = int(raw_time[:-7])
