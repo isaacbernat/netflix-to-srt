@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tt xmlns:tt="http://www.w3.org/2006/10/ttaf1" xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" xmlns:ttp="http://www.w3.org/2006/10/ttaf1#parameter" xmlns:tts="http://www.w3.org/2006/10/ttaf1#styling" ttp:tickRate="10000000" ttp:timeBase="media" xmlns="http://www.w3.org/2006/10/ttaf1">
+<head>
+<ttp:profile use="http://netflix.com/ttml/profile/dfxp-simplesdh"/>
+<styling>
+<style tts:fontStyle="italic" xml:id="normal_1"/>
+</styling>
+</head>
+<body>
+<div xml:space="preserve">
+<p begin="6673332t" end="27026999t" xml:id="subtitle0"><span style="normal_1">En capítulos anteriores</span><br/><span style="normal_1">de </span>Doce Monos<span style="normal_1">:</span></p>
+<p begin="30363666t" end="46379666t" xml:id="subtitle1">Mi padre tenía planes para mí.</p>
+</div>
+</body>
+</tt>

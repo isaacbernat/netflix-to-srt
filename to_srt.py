@@ -10,11 +10,17 @@ def leading_zeros(value, digits=2):
 
 
 def convert_time(raw_time):
-    if int(raw_time) == 0:
-        return "{}:{}:{},{}".format(0,0,0,0)
-    ms = leading_zeros(int(raw_time[:-4]) % 1000, 3)
+    raw_time_len = len(raw_time)
     # only interested in milliseconds, let's drop the additional digits
-    time_in_seconds = int(raw_time[:-7])
+    if raw_time_len > 4:
+        ms = leading_zeros(int(raw_time[:-4]) % 1000, 3)
+    else:
+        ms = '000'
+    if raw_time_len > 7:
+        time_in_seconds = int(raw_time[:-7])
+    else:
+        time_in_seconds = 0
+
     second = leading_zeros(time_in_seconds % 60)
     minute = leading_zeros(int(math.floor(time_in_seconds / 60)) % 60)
     hour = leading_zeros(int(math.floor(time_in_seconds / 3600)))
