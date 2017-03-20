@@ -10,17 +10,13 @@ def leading_zeros(value, digits=2):
 
 
 def convert_time(raw_time):
-    raw_time_len = len(raw_time)
-    # only interested in milliseconds, let's drop the additional digits
-    if raw_time_len > 4:
-        ms = leading_zeros(int(raw_time[:-4]) % 1000, 3)
-    else:
-        ms = '000'
-    if raw_time_len > 7:
-        time_in_seconds = int(raw_time[:-7])
-    else:
-        time_in_seconds = 0
+    if int(raw_time) == 0:
+        return "{}:{}:{},{}".format(0, 0, 0, 0)
 
+    ms = '000'
+    if len(raw_time) > 4:
+        ms = leading_zeros(int(raw_time[:-4]) % 1000, 3)
+    time_in_seconds = int(raw_time[:-7]) if len(raw_time) > 7 else 0
     second = leading_zeros(time_in_seconds % 60)
     minute = leading_zeros(int(math.floor(time_in_seconds / 60)) % 60)
     hour = leading_zeros(int(math.floor(time_in_seconds / 3600)))
@@ -100,6 +96,7 @@ def main():
 
     with codecs.open(a.output, 'wb', "utf-8") as f:
         f.write(to_srt(text))
+
 
 if __name__ == '__main__':
     main()
