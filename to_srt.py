@@ -1,7 +1,8 @@
-import codecs
-import re
-import math
 import argparse
+import codecs
+import math
+import os
+import re
 
 
 def leading_zeros(value, digits=2):
@@ -82,20 +83,20 @@ def to_srt(text):
 
 
 def main():
-    filename = "sample.xml"
-    help_text = "path to the {} file (defaults to {})"
+    directory = "."
+    help_text = "path to the {} directory (defaults to current directory)"
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--input", type=str, default=filename,
-                        help=help_text.format("input", filename))
-    parser.add_argument("-o", "--output", type=str, default=filename + ".srt",
-                        help=help_text.format("output", filename + ".srt"))
+    parser.add_argument("-i", "--input", type=str, default=directory,
+                        help=help_text.format("input", directory))
+    parser.add_argument("-o", "--output", type=str, default=directory,
+                        help=help_text.format("output", directory))
     a = parser.parse_args()
-
-    with codecs.open(a.input, 'rb', "utf-8") as f:
-        text = f.read()
-
-    with codecs.open(a.output, 'wb', "utf-8") as f:
-        f.write(to_srt(text))
+    xmls = [x for x in os.listdir(a.input) if x[-4:] == ".xml"]
+    for x in xmls:
+        with codecs.open("{}/{}".format(a.input, x), 'rb', "utf-8") as f:
+            text = f.read()
+        with codecs.open("{}/{}.srt".format(a.output, x), 'wb', "utf-8") as f:
+            f.write(to_srt(text))
 
 
 if __name__ == '__main__':
