@@ -108,7 +108,7 @@ def main():
     parser.add_argument("-o", "--output", type=str, default=directory,
                         help=help_text.format("output", directory))
     a = parser.parse_args()
-    xmls = [x for x in os.listdir(a.input) if x[-4:] == ".txt"]
+    xmls = [x for x in os.listdir(a.input) if x[-4:] == ".xml"]
     for x in xmls:
         with codecs.open("{}/{}".format(a.input, x), 'rb', "utf-8") as f:
             text = f.read()
