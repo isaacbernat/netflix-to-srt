@@ -1,7 +1,7 @@
 1
 00:00:00,667 --> 00:00:02,702
-En capítulos anteriores
-de Doce Monos:
+<i>En capítulos anteriores</i>
+<i>de </i>Doce Monos<i>:</i>
 
 2
 00:00:03,036 --> 00:00:04,637

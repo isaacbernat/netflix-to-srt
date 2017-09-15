@@ -8,17 +8,17 @@ It's been a while.
 
 3
 00:00:16,183 --> 00:00:19,394
-Terrace House is a show about
+{\an8}<i>Terrace House</i> is a show about
 six strangers, men and women,
 
 4
 00:00:19,477 --> 00:00:22,605
-living together, and we observe
+{\an8}living together, and we observe
 how they interact with each other.
 
 5
 00:00:22,689 --> 00:00:26,276
-All that we've prepared
+{\an8}All that we've prepared
 is a beautiful home and automobile.
 
 6
@@ -31,5 +31,5 @@ No, there is not.
 
 8
 00:00:30,780 --> 00:00:36,328
-Terrace House has now
+<i>Terrace House</i> has now
 been revived by Netflix.
