@@ -27,7 +27,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Save as
 
 ## Convert them into .srt
-- [Get python](https://www.python.org/downloads/) (tested under both 2.7 and 3.3). *If you have mac or linux you may skip this step*
+- [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
 - Clone this repository or download `to_srt.py`
 - Run the script in the terminal (`python to_srt.py`)
   - Input and output directories default to the same directory `to_srt.py` is run
@@ -41,7 +41,7 @@ VLC player could not reproduce that kind of xml subtitles and I could not find a
 ## TODOs
 - More robust file parsing than just some quick and dirty regexes
 - Javascript/web version so this can be done entirely through a browser
-- Tests (not just the "sample" files)
+- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results.
 - Create a pip package for this
 
 ## Note:
