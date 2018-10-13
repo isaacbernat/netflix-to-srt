@@ -27,7 +27,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Save as
 
 ## Convert them into .srt
-- [Get python](https://www.python.org/downloads/) (tested under both 2.7 and 3.3). *If you have mac or linux you may skip this step*
+- [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
 - Clone this repository or download `to_srt.py`
 - Run the script in the terminal (`python to_srt.py`)
   - Input and output directories default to the same directory `to_srt.py` is run
