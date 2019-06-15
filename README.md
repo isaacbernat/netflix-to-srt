@@ -41,7 +41,7 @@ VLC player could not reproduce that kind of xml subtitles and I could not find a
 ## TODOs
 - More robust file parsing than just some quick and dirty regexes
 - Javascript/web version so this can be done entirely through a browser
-- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results.
+- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results (or `python3 to_srt.py -i samples -o samples`).
 - Create a pip package for this
 
 ## Note:
