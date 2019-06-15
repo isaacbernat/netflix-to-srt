@@ -47,8 +47,31 @@ def to_srt(text, extension):
         return vtt_to_srt(text)
 
 
+def convert_vtt_time(line):
+    times = line.replace(".", ",").split(" --> ")
+    if len(times[0]) == 9:
+        times = ["00:" + t for t in times]
+    return "{} --> {}".format(times[0], times[1].split(" ")[0])
+
+
 def vtt_to_srt(text):
-    return ""
+    if not text.startswith("WEBVTT"):
+        raise Exception(".vtt format must start with WEBVTT, wrong file?")
+
+    lines = []
+    current_sub_line = []
+    for line in text.split("\n"):
+        if current_sub_line:
+            current_sub_line.append(line)
+            if not line:
+                lines.append("\n".join(current_sub_line) + "\n")
+                current_sub_line = []
+
+        elif " --> " in line:
+            current_sub_line = [convert_vtt_time(line)]
+    lines.append("\n".join(current_sub_line))
+
+    return "".join(("{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
 
 
 def xml_to_srt(text):
