@@ -5,6 +5,9 @@ import os
 import re
 
 
+SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
+
+
 def leading_zeros(value, digits=2):
     value = "000000" + str(value)
     return value[-digits:]
@@ -37,7 +40,41 @@ def xml_id_display_align_before(text):
     return u""
 
 
-def to_srt(text):
+def to_srt(text, extension):
+    if extension == ".xml":
+        return xml_to_srt(text)
+    if extension == ".vtt":
+        return vtt_to_srt(text)
+
+
+def convert_vtt_time(line):
+    times = line.replace(".", ",").split(" --> ")
+    if len(times[0]) == 9:
+        times = ["00:" + t for t in times]
+    return "{} --> {}".format(times[0], times[1].split(" ")[0])
+
+
+def vtt_to_srt(text):
+    if not text.startswith("WEBVTT"):
+        raise Exception(".vtt format must start with WEBVTT, wrong file?")
+
+    lines = []
+    current_sub_line = []
+    for line in text.split("\n"):
+        if current_sub_line:
+            current_sub_line.append(line)
+            if not line:
+                lines.append("\n".join(current_sub_line) + "\n")
+                current_sub_line = []
+
+        elif " --> " in line:
+            current_sub_line = [convert_vtt_time(line)]
+    lines.append("\n".join(current_sub_line))
+
+    return "".join(("{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
+
+
+def xml_to_srt(text):
     def append_subs(start, end, prev_content, format_time):
         subs.append({
             "start_time": convert_time(start) if format_time else start,
@@ -110,12 +147,13 @@ def main():
     parser.add_argument("-o", "--output", type=str, default=directory,
                         help=help_text.format("output", directory))
     a = parser.parse_args()
-    xmls = [x for x in os.listdir(a.input) if x[-4:] == ".xml"]
-    for x in xmls:
-        with codecs.open("{}/{}".format(a.input, x), 'rb', "utf-8") as f:
+    filenames = [fn for fn in os.listdir(a.input)
+                 if fn[-4:] in SUPPORTED_EXTENSIONS]
+    for fn in filenames:
+        with codecs.open("{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
-        with codecs.open("{}/{}.srt".format(a.output, x), 'wb', "utf-8") as f:
-            f.write(to_srt(text))
+        with codecs.open("{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
+            f.write(to_srt(text, fn[-4:]))
 
 
 if __name__ == '__main__':

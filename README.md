@@ -1,6 +1,6 @@
 # netflix-to-srt
-1. Get the subtitles from netflix
-2. Convert them into .srt
+1. Get the subtitles from netflix (`.xml` dfxp or `.vtt` files)
+2. Convert them into `.srt`
 
 ## Get the subtitles from netflix
 ### Method 1
@@ -32,16 +32,16 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Run the script in the terminal (`python to_srt.py`)
   - Input and output directories default to the same directory `to_srt.py` is run
   - Use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
-  - All `.xml` files in the input directory will generate a converted `.srt` file on the output one
+  - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
 - Enjoy!
 
 ## Why this repository?
-VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. `.srt`) in linux or mac.
+VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac. I got a request for WebVTT (`.vtt`) and did the same.
 
 ## TODOs
 - More robust file parsing than just some quick and dirty regexes
 - Javascript/web version so this can be done entirely through a browser
-- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results.
+- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results (or `python3 to_srt.py -i samples -o samples`).
 - Create a pip package for this
 
 ## Note:
