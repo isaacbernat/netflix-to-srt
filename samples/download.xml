@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling" ttp:tickRate="10000000" ttp:timeBase="media" xmlns="http://www.w3.org/ns/ttml">
+<head>
+<ttp:profile use="http://netflix.com/ttml/profile/dfxp-ls-sdh"/>
+<styling>
+<style tts:color="white" tts:fontSize="100%" tts:fontWeight="normal" xml:id="span"/>
+</styling>
+<layout>
+<region tts:backgroundColor="transparent" tts:displayAlign="after" tts:extent="80.00% 80.00%" tts:origin="10.00% 10.00%" tts:textAlign="center" xml:id="bottom"/>
+</layout>
+</head>
+<body>
+<div xml:space="preserve">
+<p begin="14597917t" end="44210834t" region="bottom" xml:id="subtitle0"><span style="span">Es gibt jetzt was ganz Neues,</span><br/><span style="span">das kann man online bestellen,</span></p>
+<p begin="45045000t" end="55472084t" region="bottom" xml:id="subtitle1"><span style="span">"Andrea".</span></p>
+<p begin="57140417t" end="78828750t" region="bottom" xml:id="subtitle2"><span style="span">Das ist so 'ne Sprachassistentin,</span></p>
+<p begin="83416667t" end="112195417t" region="bottom" xml:id="subtitle3"><span style="span">da kann man Fragen stellen,</span><br/><span style="span">ich kann das kurz demonstrieren.</span></p>
+<p begin="113863750t" end="130547084t" region="bottom" xml:id="subtitle4"><span style="span">Ähm, Andrea?</span></p>
+<p begin="136803334t" end="151818334t" region="bottom" xml:id="subtitle5"><span style="span">Wie wird das Wetter?</span></p>
+<p begin="152652500t" end="173506667t" region="bottom" xml:id="subtitle6"><span style="span">(Andrea) *Schreit*</span><br/><span style="span">Heute schifft es wie Sau</span></p>
+<p begin="174757917t" end="187687500t" region="bottom" xml:id="subtitle7"><span style="span">und morgen wird's so heiß,</span></p>
+<p begin="188938750t" end="212712500t" region="bottom" xml:id="subtitle8"><span style="span">dass mir wieder literweise</span><br/><span style="span">die Suppe runterläuft.</span></p>
+<p begin="219385834t" end="232315417t" region="bottom" xml:id="subtitle9"><span style="span">Oder, ähm...</span></p>
+<p begin="243159584t" end="253169584t" region="bottom" xml:id="subtitle10"><span style="span">(Carolin) *Lacht*</span></p>
+<p begin="280280000t" end="309892917t" region="bottom" xml:id="subtitle11"><span style="span">Andrea? Wie spät ist es?</span></p>
+<p begin="314063750t" end="340757084t" region="bottom" xml:id="subtitle12"><span style="span">(Andrea) *Schreit*</span><br/><span style="span">Es ist fünf vor auf die Fresse!</span></p>
+</div>
+</body>
+</tt>

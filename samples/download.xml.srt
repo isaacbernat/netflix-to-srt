@@ -1,0 +1,56 @@
+1
+00:00:01,459 --> 00:00:04,421
+<i>Es gibt jetzt was ganz Neues,</i>
+<i>das kann man online bestellen,</i>
+
+2
+00:00:04,504 --> 00:00:05,547
+<i>"Andrea".</i>
+
+3
+00:00:05,714 --> 00:00:07,882
+<i>Das ist so 'ne Sprachassistentin,</i>
+
+4
+00:00:08,341 --> 00:00:11,219
+<i>da kann man Fragen stellen,</i>
+<i>ich kann das kurz demonstrieren.</i>
+
+5
+00:00:11,386 --> 00:00:13,054
+<i>Ähm, Andrea?</i>
+
+6
+00:00:13,680 --> 00:00:15,181
+<i>Wie wird das Wetter?</i>
+
+7
+00:00:15,265 --> 00:00:17,350
+<i>(Andrea) *Schreit*</i>
+<i>Heute schifft es wie Sau</i>
+
+8
+00:00:17,475 --> 00:00:18,768
+<i>und morgen wird's so heiß,</i>
+
+9
+00:00:18,893 --> 00:00:21,271
+<i>dass mir wieder literweise</i>
+<i>die Suppe runterläuft.</i>
+
+10
+00:00:21,938 --> 00:00:23,231
+<i>Oder, ähm...</i>
+
+11
+00:00:24,315 --> 00:00:25,316
+<i>(Carolin) *Lacht*</i>
+
+12
+00:00:28,028 --> 00:00:30,989
+<i>Andrea? Wie spät ist es?</i>
+
+13
+00:00:31,406 --> 00:00:34,075
+<i>(Andrea) *Schreit*</i>
+<i>Es ist fünf vor auf die Fresse!</i>
