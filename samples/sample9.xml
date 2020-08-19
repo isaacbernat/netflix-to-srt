@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tt xmlns:tt="http://www.w3.org/2006/10/ttaf1" xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" xmlns:ttp="http://www.w3.org/2006/10/ttaf1#parameter" xmlns:tts="http://www.w3.org/2006/10/ttaf1#styling" ttp:tickRate="10000000" ttp:timeBase="media" xmlns="http://www.w3.org/2006/10/ttaf1">
+<head>
+<ttp:profile use="http://netflix.com/ttml/profile/dfxp-simplesdh"/>
+<styling>
+<style tts:textAlign="right" xml:id="style0"/>
+<style tts:color="white" xml:id="style1"/>
+<style tts:textAlign="center" xml:id="style2"/>
+<style tts:color="magenta" xml:id="style3"/>
+<style tts:color="green" xml:id="style4"/>
+<style tts:color="yellow" xml:id="style5"/>
+<style tts:color="cyan" xml:id="style6"/>
+</styling>
+</head>
+<body>
+<div xml:space="preserve">
+<p begin="1362920000t" end="1376670000t" region="region1" style="style2" tts:extent="80.00% 5.33%" tts:origin="10.00% 84.67%" xml:id="subtitle10"><span style="style3">¡Dejad de moverle!</span></p>
+<p begin="1397920000t" end="1413750000t" region="region1" style="style2" tts:extent="80.00% 5.33%" tts:origin="10.00% 84.67%" xml:id="subtitle11"><span style="style4">¡No mováis la valla!</span></p>
+<p begin="1416670000t" end="1436250000t" region="region1" style="style2" tts:extent="80.00% 10.66%" tts:origin="10.00% 79.34%" xml:id="subtitle12"><span style="style1">(EN INGLÉS) ¡Soy refugiado!</span><br/><span style="style1">¡Soy refugiado!</span></p>
+</div>
+</body>
+</tt>
