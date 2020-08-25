@@ -41,9 +41,9 @@ def xml_id_display_align_before(text):
 
 
 def to_srt(text, extension):
-    if extension == ".xml":
+    if extension.lower() == ".xml":
         return xml_to_srt(text)
-    if extension == ".vtt":
+    if extension.lower() == ".vtt":
         return vtt_to_srt(text)
 
 
@@ -148,7 +148,7 @@ def main():
                         help=help_text.format("output", directory))
     a = parser.parse_args()
     filenames = [fn for fn in os.listdir(a.input)
-                 if fn[-4:] in SUPPORTED_EXTENSIONS]
+                 if fn[-4:].lower() in SUPPORTED_EXTENSIONS]
     for fn in filenames:
         with codecs.open("{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
