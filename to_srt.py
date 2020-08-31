@@ -40,6 +40,15 @@ def xml_id_display_align_before(text):
     return u""
 
 
+def xml_get_cursive_style_names(text):
+    style_section = re.search("<styling>(.*)</styling>", text, flags=re.DOTALL)
+    if not style_section:
+        return []
+    style_ids_re = re.compile('<style .* xml:id=\"(.+)\"')
+    style_lines = [l for l in style_section.group().split("\n") if re.search(style_ids_re, l)]
+    # TODO catch only the id. Only the id of the cursive ones!
+
+
 def to_srt(text, extension):
     if extension == ".xml":
         return xml_to_srt(text)
@@ -82,6 +91,7 @@ def xml_to_srt(text):
             "content": u"\n".join(prev_content),
         })
 
+    xml_get_cursive_style_names(text)
     display_align_before = xml_id_display_align_before(text)
     begin_re = re.compile(u"\s*<p begin=")
     sub_lines = (l for l in text.split("\n") if re.search(begin_re, l))
