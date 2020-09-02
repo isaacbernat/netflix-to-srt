@@ -40,13 +40,15 @@ def xml_id_display_align_before(text):
     return u""
 
 
-def xml_get_cursive_style_names(text):
+def xml_get_cursive_style_ids(text):
     style_section = re.search("<styling>(.*)</styling>", text, flags=re.DOTALL)
     if not style_section:
         return []
-    style_ids_re = re.compile('<style .* xml:id=\"(.+)\"')
-    style_lines = [l for l in style_section.group().split("\n") if re.search(style_ids_re, l)]
-    # TODO catch only the id. Only the id of the cursive ones!
+    style_ids_re = re.compile(
+        '<style .* tts:fontStyle="italic" .* xml:id=\"([a-zA-Z0-9_.]+)\"')
+    return [re.search(style_ids_re, line).groups()[0]
+            for line in style_section.group().split("\n")
+            if re.search(style_ids_re, line)]
 
 
 def to_srt(text, extension):
@@ -91,7 +93,6 @@ def xml_to_srt(text):
             "content": u"\n".join(prev_content),
         })
 
-    xml_get_cursive_style_names(text)
     display_align_before = xml_id_display_align_before(text)
     begin_re = re.compile(u"\s*<p begin=")
     sub_lines = (l for l in text.split("\n") if re.search(begin_re, l))
@@ -103,16 +104,22 @@ def xml_to_srt(text):
     end_re = re.compile(u'end\="([0-9:\.]*)')
     content_re = re.compile(u'\">(.*)</p>')
 
-    # span tags are only used for italics, so we'll get rid of them
-    # and replace them by <i> and </i>, which is the standard for .srt files
+    # some span tags are used for italics, we'll replace them by <i> and </i>,
+    # which is the standard for .srt files. We ignore all other uses.
+    cursive_ids = xml_get_cursive_style_ids(text)
     span_start_re = re.compile(u'(<span style=\"[a-zA-Z0-9_.]+\">)+')
+    span_id_re = re.compile(u'(<span style=\"([a-zA-Z0-9_.]+)\">)+')
     span_end_re = re.compile(u'(</span>)+')
     br_re = re.compile(u'(<br\s*\/?>)+')
     fmt_t = True
     for s in sub_lines:
         span_start_tags = re.search(span_start_re, s)
+        srt_cursive = u""
         if span_start_tags:
-            s = u"<i>".join(s.split(span_start_tags.group()))
+            span_id = re.search(span_id_re, s)
+            srt_cursive = u"<i>" if span_id.groups()[1] in cursive_ids else u""
+            s = srt_cursive.join(s.split(span_start_tags.groups()[0]))
+
         string_region_re = r'<p(.*region="' + display_align_before + r'".*")>(.*)</p>'
         s = re.sub(string_region_re, r'<p\1>{\\an8}\2</p>', s)
         content = re.search(content_re, s).group(1)
@@ -123,7 +130,8 @@ def xml_to_srt(text):
 
         span_end_tags = re.search(span_end_re, content)
         if span_end_tags:
-            content = u"</i>".join(content.split(span_end_tags.group()))
+            srt_cursive = u"</i>" if srt_cursive else u""
+            content = srt_cursive.join(content.split(span_end_tags.group()))
 
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
