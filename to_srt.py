@@ -45,7 +45,7 @@ def xml_get_cursive_style_ids(text):
     if not style_section:
         return []
     style_ids_re = re.compile(
-        '<style .* tts:fontStyle="italic" .* xml:id=\"([a-zA-Z0-9_.]+)\"')
+        '<style.* tts:fontStyle="italic".* xml:id=\"([a-zA-Z0-9_.]+)\"')
     return [re.search(style_ids_re, line).groups()[0]
             for line in style_section.group().split("\n")
             if re.search(style_ids_re, line)]
