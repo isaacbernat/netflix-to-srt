@@ -82,7 +82,7 @@ def vtt_to_srt(text):
             current_sub_line = [convert_vtt_time(line)]
     lines.append("\n".join(current_sub_line))
 
-    return "".join(("{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
+    return "".join((u"{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
 
 
 def xml_to_srt(text):
@@ -158,7 +158,7 @@ def xml_to_srt(text):
 
 def main():
     directory = "."
-    help_text = "path to the {} directory (defaults to current directory)"
+    help_text = u"path to the {} directory (defaults to current directory)"
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input", type=str, default=directory,
                         help=help_text.format("input", directory))
