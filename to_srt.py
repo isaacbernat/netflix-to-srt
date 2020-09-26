@@ -66,7 +66,7 @@ def convert_vtt_time(line):
 
 
 def vtt_to_srt(text):
-    if not text.startswith("WEBVTT"):
+    if not text.startswith("\ufeffWEBVTT"):
         raise Exception(".vtt format must start with WEBVTT, wrong file?")
 
     lines = []
@@ -80,7 +80,6 @@ def vtt_to_srt(text):
 
         elif " --> " in line:
             current_sub_line = [convert_vtt_time(line)]
-    lines.append("\n".join(current_sub_line))
 
     return "".join((u"{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
 
