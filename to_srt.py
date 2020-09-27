@@ -80,6 +80,8 @@ def vtt_to_srt(text):
 
         elif " --> " in line:
             current_sub_line = [convert_vtt_time(line)]
+    if current_sub_line:
+        lines.append("\n".join(current_sub_line))
 
     return "".join((u"{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
 
