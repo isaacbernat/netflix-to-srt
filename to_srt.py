@@ -66,7 +66,7 @@ def convert_vtt_time(line):
 
 
 def vtt_to_srt(text):
-    if not text.startswith("\ufeffWEBVTT"):
+    if not text.startswith(u"\ufeffWEBVTT") and not text.startswith(u"WEBVTT"):
         raise Exception(".vtt format must start with WEBVTT, wrong file?")
 
     lines = []
