@@ -1,6 +1,7 @@
 # netflix-to-srt
 1. Get the subtitles from netflix (`.xml` dfxp or `.vtt` files)
 2. Convert them into `.srt`
+- **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome.
 
 ## Get the subtitles from netflix
 ### Method 1
