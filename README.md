@@ -1,10 +1,10 @@
 # netflix-to-srt
-1. Get the subtitles from netflix (`.xml` dfxp or `.vtt` files)
+1. Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube or other sources.
 2. Convert them into `.srt`
-- **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome.
+- **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube on how to to download and convert subtitles from Netflix](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome.
 
-## Get the subtitles from netflix
-### Method 1
+## Get the subtitles:
+### From Netflix: method 1
 You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not tested on other web browsers*
 
 1. Open devtools. This is usually accomplished by either:
@@ -17,7 +17,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 
 <img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
 
-### Method 2
+### From Netflix: method 2
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
 
 You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
@@ -26,6 +26,12 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Search: dfxp *(e.g. >> #.nflximg.com/#/#/########.dfxp?v=1&e=#########&t=######_#####&random=1234567890)*
 - open the dfxp in a new window
 - Save as
+
+### From YouTube
+- Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux)
+- Download subs from the YouTube URL you like e.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
+- Subtitles should be downloaded in the same folder were the command was ran. E.g. `NameOfTheVideo VHNfvFOBC0A.ca.vtt, NameOfTheVideo VHNfvFOBC0A.tlh.vtt`
+- If you are missing a language, check that it's actually available. E.g. `youtube-dl --list-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
 
 ## Convert them into .srt
 - [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
@@ -46,4 +52,4 @@ VLC player could not reproduce that kind of xml subtitles and I could not find a
 - Create a pip package for this
 
 ## Note:
-In no way I am encouraging any kind of illegal activity. Please know your local laws and ask for written permissions from content owners (e.g. Netflix) when necessary.
+In no way I am encouraging any kind of illegal activity. Please know your local laws and ask for written permissions from content owners (e.g. Netflix, YouTube) when necessary.
