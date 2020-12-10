@@ -1,6 +1,6 @@
 # netflix-to-srt
-1. Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube or other sources.
-2. Convert them into `.srt`
+1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) from Netflix (`.xml` dfxp or `.vtt` files), YouTube or other sources.
+2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt`
 - **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube on how to to download and convert subtitles from Netflix](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome. [![YouTube link to the tutorial](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/tutorial.png "YouTube link to the tutorial")](https://www.youtube.com/watch?v=ZpejTczG8Ho)
 
 ## Get the subtitles:
@@ -35,12 +35,12 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ## Convert them into .srt
 - [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
-- Clone this repository or download `to_srt.py`
-- Run the script in the terminal (`python to_srt.py`)
-  - Input and output directories default to the same directory `to_srt.py` is run
-  - Use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
+- Clone this repository or [download `to_srt.py`](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
+- Run the script in the terminal (type `python to_srt.py` from the terminal on the folder you have `to_srt.py`)
+  - Copy your subtitle files in the same directory as `to_srt.py`
+    - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
-- Enjoy! (And star the repo if you liked it ;D)
+- Enjoy! (And **star the repo** if you liked it ;D)
 
 ## Why this repository?
 VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac. I got a request for WebVTT (`.vtt`) and did the same.
