@@ -51,22 +51,22 @@ def xml_get_cursive_style_ids(text):
             if re.search(style_ids_re, line)]
 
 
-def xml_cleanup_spans(
-        span_start_re, span_end_re, span_id_re, cursive_ids,
-        text, position, has_cursive=False):
-    if position == "start":
-        span_start_tags = re.search(span_start_re, text)
-        if span_start_tags:
-            span_id = re.search(span_id_re, text)
-            has_cursive = u"<i>" if span_id.groups()[1] in cursive_ids else u""
-            text = has_cursive.join(text.split(span_start_tags.groups()[0]))
-    elif position == "end":
-        span_end_tags = re.search(span_end_re, text)
-        if span_end_tags:
-            has_cursive = u"</i>" if has_cursive else u""
-            text = has_cursive.join(text.split(span_end_tags.group()))
-
+def xml_cleanup_spans_start(span_start_re, span_id_re, cursive_ids, text):
+    has_cursive = u""
+    span_start_tags = re.search(span_start_re, text)
+    if span_start_tags:
+        span_id = re.search(span_id_re, text)
+        has_cursive = u"<i>" if span_id.groups()[1] in cursive_ids else u""
+        text = has_cursive.join(text.split(span_start_tags.groups()[0]))
     return text, has_cursive
+
+
+def xml_cleanup_spans_end(span_end_re, cursive_ids, text, has_cursive):
+    span_end_tags = re.search(span_end_re, text)
+    if span_end_tags:
+        has_cursive = u"</i>" if has_cursive else u""
+        text = has_cursive.join(text.split(span_end_tags.group()))
+    return text
 
 
 def to_srt(text, extension):
@@ -132,8 +132,8 @@ def xml_to_srt(text):
     br_re = re.compile(u'(<br\s*\/?>)+')
     fmt_t = True
     for s in sub_lines:
-        s, has_cursive = xml_cleanup_spans(
-            span_start_re, None, span_id_re, cursive_ids, s, "start")
+        s, has_cursive = xml_cleanup_spans_start(
+            span_start_re, span_id_re, cursive_ids, s)
 
         string_region_re = r'<p(.*region="' + display_align_before + r'".*")>(.*)</p>'
         s = re.sub(string_region_re, r'<p\1>{\\an8}\2</p>', s)
@@ -143,8 +143,8 @@ def xml_to_srt(text):
         if br_tags:
             content = u"\n".join(content.split(br_tags.group()))
 
-        content, has_cursive = xml_cleanup_spans(
-            None, span_end_re, None, cursive_ids, content, "end", has_cursive)
+        content = xml_cleanup_spans_end(
+            span_end_re, cursive_ids, content, has_cursive)
 
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
