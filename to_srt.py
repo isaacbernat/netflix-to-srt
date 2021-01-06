@@ -51,21 +51,20 @@ def xml_get_cursive_style_ids(text):
             if re.search(style_ids_re, line)]
 
 
-def xml_cleanup_spans_start(span_start_re, span_id_re, cursive_ids, text):
-    has_cursive = u""
-    span_start_tags = re.search(span_start_re, text)
-    if span_start_tags:
-        span_id = re.search(span_id_re, text)
-        has_cursive = u"<i>" if span_id.groups()[1] in cursive_ids else u""
-        text = has_cursive.join(text.split(span_start_tags.groups()[0]))
+def xml_cleanup_spans_start(span_id_re, cursive_ids, text):
+    has_cursive = []
+    span_start_tags = re.findall(span_id_re, text)
+    for s in span_start_tags:
+        has_cursive.append(u"<i>" if s[1] in cursive_ids else u"")
+        text = has_cursive[-1].join(text.split(s[0], 1))
     return text, has_cursive
 
 
-def xml_cleanup_spans_end(span_end_re, cursive_ids, text, has_cursive):
-    span_end_tags = re.search(span_end_re, text)
-    if span_end_tags:
-        has_cursive = u"</i>" if has_cursive else u""
-        text = has_cursive.join(text.split(span_end_tags.group()))
+def xml_cleanup_spans_end(span_end_re, text, has_cursive):
+    span_end_tags = re.findall(span_end_re, text)
+    for s, cursive in zip(span_end_tags, has_cursive):
+        cursive = u"</i>" if cursive else u""
+        text = cursive.join(text.split(s, 1))
     return text
 
 
@@ -126,14 +125,13 @@ def xml_to_srt(text):
     # some span tags are used for italics, we'll replace them by <i> and </i>,
     # which is the standard for .srt files. We ignore all other uses.
     cursive_ids = xml_get_cursive_style_ids(text)
-    span_start_re = re.compile(u'(<span style=\"[a-zA-Z0-9_.]+\">)+')
     span_id_re = re.compile(u'(<span style=\"([a-zA-Z0-9_.]+)\">)+')
     span_end_re = re.compile(u'(</span>)+')
     br_re = re.compile(u'(<br\s*\/?>)+')
     fmt_t = True
     for s in sub_lines:
         s, has_cursive = xml_cleanup_spans_start(
-            span_start_re, span_id_re, cursive_ids, s)
+            span_id_re, cursive_ids, s)
 
         string_region_re = r'<p(.*region="' + display_align_before + r'".*")>(.*)</p>'
         s = re.sub(string_region_re, r'<p\1>{\\an8}\2</p>', s)
@@ -144,7 +142,7 @@ def xml_to_srt(text):
             content = u"\n".join(content.split(br_tags.group()))
 
         content = xml_cleanup_spans_end(
-            span_end_re, cursive_ids, content, has_cursive)
+            span_end_re, content, has_cursive)
 
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
