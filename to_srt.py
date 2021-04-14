@@ -245,10 +245,15 @@ def xml_to_ass(text, fileTitle):
     return addAssheader(fileTitle) + concatenatedDialogues
 
 def setFont(text):
-    if text.isupper():
+    text = text.replace('&amp;', '&')
+    isHourFormat = re.match(r'([01]?[0-9]|2[0-3])h[0-5][0-9]', text) or re.match(r'([01]?[0-9]|2[0-3])\sh\s[0-5][0-9]', text)
+    
+    if isHourFormat:
         return 'Sign'
     elif 'an8' in text:
         return 'Top'
+    elif text.isupper():
+        return 'Sign'
     else:
         return 'Default'
 
