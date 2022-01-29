@@ -85,14 +85,24 @@ def convert_vtt_time(line):
 def vtt_to_srt(text):
     if not text.startswith(u"\ufeffWEBVTT") and not text.startswith(u"WEBVTT"):
         raise Exception(".vtt format must start with WEBVTT, wrong file?")
+    styles = get_vtt_styles(text)
+    style_tag_re = re.compile(u'<c\.(.*)>(.*)</c>')
 
     lines = []
     current_sub_line = []
     for line in text.split("\n"):
         if current_sub_line:
-            current_sub_line.append(line)
-            if not line:
-                lines.append("\n".join(current_sub_line) + "\n")
+            if line:
+                style_tag = re.search(style_tag_re, line)
+                if style_tag:
+                    line = style_tag.group(2)  # line is just the text part
+                    color = styles.get(style_tag.group(1).split(".")[0])
+                    if color:
+                        line = u"<font color={}>{}</font>".format(
+                            color, line)
+                current_sub_line.append(line)
+            else:
+                lines.append("\n".join(current_sub_line) + "\n\n")
                 current_sub_line = []
 
         elif " --> " in line:
@@ -101,6 +111,23 @@ def vtt_to_srt(text):
         lines.append("\n".join(current_sub_line))
 
     return "".join((u"{}\n{}".format(i, l) for i, l in enumerate(lines, 1)))
+
+
+def get_vtt_styles(text):  # just using it for color ATM
+    styles = {}
+    lines = text.split("\n")
+    n = 0
+    style_name_re = re.compile(u'::cue\(\.(.*)\).*')
+    color_re = re.compile(u'.*color: (\#.*);')
+    while n < len(lines):  # not efficient to go through all text, but it's ok
+        style_name = re.search(style_name_re, lines[n])
+        if style_name and style_name.groups():
+            name = style_name.group(1)
+            color = re.search(color_re, lines[n + 1])
+            if color and color.groups():
+                styles[name] = color.group(1)
+        n += 1
+    return styles
 
 
 def xml_to_srt(text):
@@ -179,9 +206,9 @@ def main():
     filenames = [fn for fn in os.listdir(a.input)
                  if fn[-4:].lower() in SUPPORTED_EXTENSIONS]
     for fn in filenames:
-        with codecs.open("{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
+        with codecs.open(u"{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
-        with codecs.open("{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
+        with codecs.open(u"{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
             f.write(to_srt(text, fn[-4:]))
 
 
