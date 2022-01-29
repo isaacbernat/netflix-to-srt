@@ -98,7 +98,7 @@ def vtt_to_srt(text):
                     line = style_tag.group(2)  # line is just the text part
                     color = styles.get(style_tag.group(1).split(".")[0])
                     if color:
-                        line = "<font color={}>{}</font>".format(
+                        line = u"<font color={}>{}</font>".format(
                             color, line)
                 current_sub_line.append(line)
             else:
@@ -206,9 +206,9 @@ def main():
     filenames = [fn for fn in os.listdir(a.input)
                  if fn[-4:].lower() in SUPPORTED_EXTENSIONS]
     for fn in filenames:
-        with codecs.open("{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
+        with codecs.open(u"{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
-        with codecs.open("{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
+        with codecs.open(u"{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
             f.write(to_srt(text, fn[-4:]))
 
 
