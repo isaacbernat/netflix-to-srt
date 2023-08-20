@@ -5,6 +5,22 @@
 
 ## Get the subtitles:
 ### From Netflix: method 1
+1. You need one of the following web browsers:
+   - [Google Chrome](https://www.google.com/chrome/browser/desktop/)
+   - Firefox
+   - Safari
+   - Microsoft Edge
+   - Opera
+2. Install [Tampermonkey](https://www.tampermonkey.net/), links below:
+   - [Chrome extension](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - [Firefox addon](https://addons.mozilla.org/firefox/addon/tampermonkey/)
+   - [Safari howto](https://www.tampermonkey.net/?browser=safari)
+   - [Microsoft Edge addon](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+   - [Opera addon](https://addons.opera.com/extensions/details/tampermonkey-beta/)
+3. Install [Netflix - subtitle downloader](https://greasyfork.org/en/scripts/26654-netflix-subtitle-downloader) script for Tampermonkey.
+4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_.
+
+### From Netflix: method 2
 You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not tested on other web browsers*
 
 1. Open devtools. This is usually accomplished by either:
@@ -17,7 +33,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 
 <img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
 
-### From Netflix: method 2
+### From Netflix: method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
 
 You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
