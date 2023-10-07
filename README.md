@@ -64,10 +64,11 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac. I got a request for WebVTT (`.vtt`) and did the same.
 
 ## TODOs
-- More robust file parsing than just some quick and dirty regexes
-- Javascript/web version so this can be done entirely through a browser
+- More robust file parsing than just some quick and dirty regexes.
+- Javascript/web version so this can be done entirely through a browser.
 - Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results (or `python3 to_srt.py -i samples -o samples`).
-- Create a pip package for this
+- Create a pip package for this.
+- More screenshots so 'Get the subtitles' section is easier to follow.
 
 ## Note:
 In no way I am encouraging any kind of illegal activity. Please know your local laws and ask for written permissions from content owners (e.g. Netflix, YouTube) when necessary.
