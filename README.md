@@ -4,6 +4,8 @@
 - **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube on how to to download and convert subtitles from Netflix](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome. [![YouTube link to the tutorial](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/tutorial.png "YouTube link to the tutorial")](https://www.youtube.com/watch?v=ZpejTczG8Ho)
 
 ## Get the subtitles:
+Feel free to create a Pull Request adding screenshots for each step/method that works best for you. 
+
 ### From Netflix: method 1
 1. You need one of the following web browsers:
    - [Google Chrome](https://www.google.com/chrome/browser/desktop/)
