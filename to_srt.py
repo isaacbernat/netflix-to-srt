@@ -139,7 +139,7 @@ def xml_to_srt(text):
         })
 
     display_align_before = xml_id_display_align_before(text)
-    begin_re = re.compile(u"\s*<p begin=")
+    begin_re = re.compile(u"(?=.*begin\=)\s*<p\s(?=.*>)")
     sub_lines = (l for l in text.split("\n") if re.search(begin_re, l))
     subs = []
     prev_time = {"start": 0, "end": 0}
