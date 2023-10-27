@@ -5,7 +5,7 @@ import os
 import re
 
 
-SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
+SUPPORTED_EXTENSIONS = [".xml", ".vtt", ".nfs"]
 
 
 def leading_zeros(value, digits=2):
@@ -73,6 +73,8 @@ def to_srt(text, extension):
         return xml_to_srt(text)
     if extension.lower() == ".vtt":
         return vtt_to_srt(text)
+    if extension.lower() == ".nfs":
+        return xml_to_srt(text)
 
 
 def convert_vtt_time(line):
