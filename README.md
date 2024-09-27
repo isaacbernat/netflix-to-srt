@@ -47,7 +47,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ### From YouTube
 - Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux)
-- Download subs from the YouTube URL you like e.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
+- Download subs from the YouTube URL you like. E.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
 - Subtitles should be downloaded in the same folder were the command was ran. E.g. `NameOfTheVideo VHNfvFOBC0A.ca.vtt, NameOfTheVideo VHNfvFOBC0A.tlh.vtt`
 - If you are missing a language, check that it's actually available. E.g. `youtube-dl --list-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
 
@@ -56,7 +56,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Clone this repository or [download `to_srt.py`](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
 - Run the script in the terminal (type `python to_srt.py` from the terminal on the folder you have `to_srt.py`)
   - Copy your subtitle files in the same directory as `to_srt.py`
-    - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
+    - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations. E.g. `python3 to_srt.py -i samples -o samples`
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
 - Enjoy! (And **star the repo** if you liked it ;D)
 
