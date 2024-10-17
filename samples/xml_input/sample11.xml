@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tt ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/imsc1.1/text" xmlns="http://www.w3.org/ns/ttml" xmlns:nttm="http://www.netflix.com/ns/ttml#metadata" xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:xml="http://www.w3.org/XML/1998/namespace" ttp:tickRate="10000000" ttp:timeBase="media" xml:lang="en">
+<head>
+<styling>
+<initial tts:backgroundColor="transparent" tts:color="white" tts:displayAlign="after" tts:extent="80.000% 80.000%" tts:fontSize="6.000rh" tts:opacity="1.000" tts:origin="10.000% 10.000%" tts:showBackground="whenActive" tts:textAlign="center" tts:textOutline="black 0.300rh" tts:writingMode="lrtb"/>
+<style xml:id="style1" tts:fontStyle="italic"/>
+</styling>
+<layout>
+<region xml:id="region0" tts:displayAlign="after" tts:extent="80.000% 40.000%" tts:origin="10.000% 50.000%"/>
+<region xml:id="region1" tts:displayAlign="before" tts:extent="80.000% 40.000%" tts:origin="10.000% 10.000%"/>
+</layout>
+</head>
+<body>
+<div>
+<p xml:id="subtitle1" begin="479228749t" end="504670832t" region="region0">[woman singing in Swedish]</p>
+<p xml:id="subtitle2" begin="790790000t" end="810392916t" region="region0">[continues singing]</p>
+<p xml:id="subtitle3" begin="919251666t" end="938854582t" region="region0">[phone ringing]</p>
+<p xml:id="subtitle4" begin="939688749t" end="958874582t" region="region0">[wind whistling]</p>
+<p xml:id="subtitle5" begin="993492499t" end="1010175832t" region="region0">[dog barking in distance]</p>
+<p xml:id="subtitle6" begin="1021437082t" end="1037703332t" region="region0">[ringing continues]</p>
+<p xml:id="subtitle7" begin="1080245832t" end="1100265832t" region="region0">[woman on answering machine]<br/><span style="style1">Hello, you have reached…</span></p>
+<p xml:id="subtitle8" begin="1101100000t" end="1116532082t" region="region0">[man] <span style="style1">…the Ardor residence.</span></p>
+<p xml:id="subtitle9" begin="1117366250t" end="1129044582t" region="region0">[woman]<br/><span style="style1">Please leave a message</span></p>
+<p xml:id="subtitle10" begin="1129878750t" end="1142391250t" region="region0"><span style="style1">after the tone.</span></p>
+<p xml:id="subtitle11" begin="1143225416t" end="1159908750t" region="region0">[phone beeps]</p>
+<p xml:id="subtitle12" begin="1170752916t" end="1196612082t" region="region0">[woman 2]<br/><span style="style1">Hey, Mom, hey, Dad, it's Dani.</span></p>
+<p xml:id="subtitle13" begin="1197446250t" end="1218717500t" region="region0"><span style="style1">Uh, I'm sorry</span><br/><span style="style1">to be calling so late.</span></p>
+</div>
+</body>
+</tt>
