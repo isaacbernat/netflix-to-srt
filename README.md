@@ -23,7 +23,7 @@ Feel free to create a Pull Request adding screenshots for each step/method that 
 4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_.
 
 ### From Netflix: method 2
-You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not tested on other web browsers*
+You need [Google Chrome](https://www.google.com/chrome/browser/desktop/) - *not tested on other web browsers*.
 
 1. Open devtools. This is usually accomplished by either:
     - Pressing `Cmd` + `Alt` + `i`.
@@ -38,7 +38,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 ### From Netflix: method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
 
-You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
+You need FireFox and AdblockPlus Add-On - *not tested on other web browsers*.
 - Start Netflix and your movie/episode (stream is active!)
 - Start AdblockPlus, open blockable items
 - Search: dfxp *(e.g. >> #.nflximg.com/#/#/########.dfxp?v=1&e=#########&t=######_#####&random=1234567890)*
@@ -58,7 +58,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
   - Copy your subtitle files in the same directory as `to_srt.py`
     - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations. E.g. `python3 to_srt.py -i samples -o samples`
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
-- Enjoy! (And **star the repo** if you liked it ;D)
+- Enjoy! (And **star the repo ★** if you liked it ;D)
 
 ## Why this repository?
 VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac. I got a request for WebVTT (`.vtt`) and did the same.
