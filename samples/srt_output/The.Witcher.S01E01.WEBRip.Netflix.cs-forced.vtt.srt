@@ -1,0 +1,12 @@
+1
+00:00:07,375 --> 00:00:10,791
+<c.czech><c.bg_transparent>PŮVODNÍ SERIÁL NETFLIX</c.bg_transparent></c.czech>
+
+2
+00:03:01,416 --> 00:03:02,583
+<c.czech><c.bg_transparent>NAJMU ZAKLÍNAČE</c.bg_transparent></c.czech>
+
+3
+01:00:00,291 --> 01:00:02,291
+<c.czech><c.bg_transparent>Překlad titulků: Eliška K. Vítová</c.bg_transparent></c.czech>
+
