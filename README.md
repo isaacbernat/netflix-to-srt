@@ -17,6 +17,12 @@
 
 
 Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other sources and convert them into `.srt` format.
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=ZpejTczG8Ho">
+    <img src="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/tutorial.png" alt="YouTube link to the tutorial" title="YouTube link to the tutorial">
+  </a>
+</p>
+
 
 
 
