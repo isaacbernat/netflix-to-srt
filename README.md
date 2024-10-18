@@ -1,9 +1,5 @@
-<p align="center">
-  <span style="font-size: 2em; font-weight: bold; font-family: 'Arial', sans-serif; background-color: rgba(0, 255, 0, 0.5); padding: 15px; border: 2px solid rgba(0, 255, 0, 0.7); color: white;">SRT Converter</span>
-</p>
+<h1 align="center">🚀 SRT Converter</h1>
 
----
----
 
 #### It is used to convert the <span style="color: pink;">`.vtt`</span> and <span style="color: pink;">`.xml`</span> files into the <span style="color: pink;">`.srt`</span> format. We do this because it is widely supported by various media players, platforms, and devices, as many popular media players (e.g., VLC, Windows Media Player) and streaming services prefer <span style="color: pink;">`.srt`</span>, as it is universal and simple & standardized.
 
@@ -12,14 +8,12 @@
 
 ---
 
-<p align="center" style="width: 100%; padding: 0; margin: 0;">
-  <span style="font-size: 1.5em; font-weight: bold; font-family: 'Arial', sans-serif; border: 2px solid rgba(255, 0, 0, 0.5); padding: 15px; display: inline-block; background-color: rgba(255, 0, 0, 0.7); color: white; width: 100%; text-align: center;">Get the subtitles:</span>
-</p>
+<h2 align="center">🧠 Get the subtitles:</h2>
 
 ---
----
 
-# 1. Netflix-To-SRT <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" style="vertical-align: middle; margin-left: 5px;"><title>Netflix</title><path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L18.6 22.951c-.043-7.86-.004-15.913.002-22.95zM5.398 1.05V24c1.873-.225 2.81-.312 4.715-.398v-9.22z"/></svg>
+
+# 1. Netflix-To-SRT 🎥
 
 
 Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other sources and convert them into `.srt` format.
@@ -60,7 +54,9 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 
 ---
 ---
-# 2. YouTube-To-SRT <span style="color: red; font-size: 2.5em;"></span> <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: red; width: 40px; height: 40px; vertical-align: middle;"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+# 2. YouTube-To-SRT 🎬
+
+
 
 - Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux)
 - Download subs from the YouTube URL you like e.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
@@ -95,7 +91,8 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 
 
 
-## Clone Repo & Run files
+## Clone Repo & Run Files 📁
+
 
 - [Get Python](https://www.python.org/downloads/) (tested under Python 2.7, 3.3, and newer). *If you have Mac or Linux, you may skip this step.*
 
