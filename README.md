@@ -134,9 +134,9 @@ This will convert all .xml files of the xml_input folder into .srt format and pl
 ---
 
 ## Note 📝
-In no way am I encouraging any kind of illegal activity. Please make sure to know your local laws and always seek proper permissions from content owners (e.g. Netflix, YouTube) when necessary. 🚨
+In no way am I encouraging any kind of illegal activity. Please make sure to know your local laws and always seek proper permissions from content owners (e.g. Netflix, YouTube) when necessary. 
 
 ## Contribution 🤗
-Contributions are always welcome! Feel free to create a Pull Request and add screenshots for each step/method that works best for you. Your help will make this project even better for everyone. 💻✨
+Contributions are always welcome! Feel free to create a Pull Request and add screenshots for each step/method that works best for you. Your help will make this project even better for everyone.
 
 Thank you for stopping by and for your support! Every bit of help is greatly appreciated. Let's build something amazing together! 😄🌟
