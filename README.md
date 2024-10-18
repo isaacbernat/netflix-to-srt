@@ -33,7 +33,10 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 | 1    | You need one of the following web browsers: <ul><li>[Google Chrome](https://www.google.com/chrome/browser/desktop/)</li><li>Firefox</li><li>Safari</li><li>Microsoft Edge</li><li>Opera</li></ul> |
 | 2    | Install [Tampermonkey](https://www.tampermonkey.net/). Links below: <ul><li>[Chrome extension](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)</li><li>[Firefox addon](https://addons.mozilla.org/firefox/addon/tampermonkey/)</li><li>[Safari how-to](https://www.tampermonkey.net/?browser=safari)</li><li>[Microsoft Edge addon](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)</li><li>[Opera addon](https://addons.opera.com/extensions/details/tampermonkey-beta/)</li></ul> |
 | 3    | Install [Netflix - subtitle downloader](https://greasyfork.org/en/scripts/26654-netflix-subtitle-downloader) script for Tampermonkey. |
-| 4    | To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on "Download subs from this episode". ![Tampermonkey Subtitle Downloader](netflix-to-srt-master/chrome_console.png) |
+| 4    | To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on "Download subs from this episode". ![Screenshot from 2024-10-18 17-35-26](https://github.com/user-attachments/assets/27baaf85-1b5d-4b20-b00e-cee60feca115)
+
+
+
 
 ## Method 2
 
@@ -44,9 +47,8 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 | 3    | Go to the Network tab within dev tools. |
 | 4    | Load your movie/episode. |
 | 5    | Select the subtitle you want. |
-| 6    | In devtools, sort by name and look for a file with `?o=` at the beginning of the name. ![Chrome Console](path-to-image/Screenshot-from-2024-10-18-00-02-41.png) |
+| 6    | In devtools, sort by name and look for a file with `?o=` at the beginning of the name. ![chrome_console](https://github.com/user-attachments/assets/0e343963-215d-4a2e-b992-cae84c458183)
 
-## Method 3
 
 | Step | Description |
 |------|-------------|
