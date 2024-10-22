@@ -1,10 +1,11 @@
 <h1 align="center">🚀 SRT Converter</h1>
 
 
-#### It is used to convert the <span style="color: pink;">`.vtt`</span> and <span style="color: pink;">`.xml`</span> files into the <span style="color: pink;">`.srt`</span> format. We do this because it is widely supported by various media players, platforms, and devices, as many popular media players (e.g., VLC, Windows Media Player) and streaming services prefer <span style="color: pink;">`.srt`</span>, as it is universal and simple & standardized.
+This tool converts `.vtt` (WebVTT) and `.xml` subtitle files into the `.srt` format, which is widely supported by various media players, platforms, and devices. The `.srt` format is popular because it's simple, standardized, and universally accepted by media players like VLC and Windows Media Player, as well as many streaming services.
 
-> **<span style="color: pink;">Note:</span>**  
-> I also found that VLC Player could not reproduce these kinds of XML subtitles, and I could not find any tool that could easily transform XML files to a suitable format (e.g., SubRip <span style="color: pink;">`.srt`</span>) on Linux or macOS. I got a request for WebVTT (<span style="color: pink;">`.vtt`</span>) and added support for it as well; that's why it encouraged me to make this.
+> **Note:**  
+> VLC Player cannot reproduce certain types of XML subtitles, and I couldn't find an easy tool for converting XML subtitles to `.srt` format on Linux or macOS. A request for WebVTT (`.vtt`) support motivated me to add this feature to the tool.
+
 
 ---
 
@@ -73,7 +74,7 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 
 > <br>
 
-> **<span style="color: pink;">Install using Snap:</span>**  
+> **Install using Snap:**
 > - Install [yt-dlp](https://github.com/yt-dlp/yt-dlp) using Snap:
 > ```bash
 > sudo snap install yt-dlp
@@ -91,7 +92,7 @@ Get the subtitles from Netflix (`.xml` dfxp or `.vtt` files), YouTube, or other 
 > ```bash
 > yt-dlp --write-auto-subs --sub-lang "en" "https://youtu.be/cVsyJvxX48A"
 > ```
->> <span style="color: pink;">Note:</span>
+>> **Note:**
 >> If you don't enable subtitles in the YouTube video (captions), then the command will not work as expected. Make sure to enable subtitles before running the command.
 > <br>
 >
