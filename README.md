@@ -1,4 +1,4 @@
-# 1. Netflix-To-SRT 
+# netflix-to-srt
 - [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) from Netflix (`.xml` dfxp or `.vtt` files), YouTube or other sources.
 - [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` <br>
 
@@ -44,7 +44,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - open the dfxp in a new window
 - Save as
 
-# 2. YouTube-To-SRT
+# YouTube-To-SRT
 - Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux)
 - Download subs from the YouTube URL you like e.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
 - Subtitles should be downloaded in the same folder were the command was ran. E.g. `NameOfTheVideo VHNfvFOBC0A.ca.vtt, NameOfTheVideo VHNfvFOBC0A.tlh.vtt`
@@ -71,7 +71,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ## Clone Repo & Run Files
 - [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
-- Clone this repository or [download the ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip).
+- Clone this repository or [download it as a ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip) or [download `to_srt.py` file](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
 - Run the script in the terminal (type `python to_srt.py` from the terminal on the folder you have `to_srt.py`)
   - Copy your subtitle files in the same directory as `to_srt.py`
     - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
