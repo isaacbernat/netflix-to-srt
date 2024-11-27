@@ -208,7 +208,7 @@ def main():
     for fn in filenames:
         with codecs.open(u"{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
-        with codecs.open(u"{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
+        with codecs.open(u"{}/{}.srt".format(a.output, fn[:-4]), 'wb', "utf-8") as f:
             f.write(to_srt(text, fn[-4:]))
 
 
