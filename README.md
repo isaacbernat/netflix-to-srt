@@ -3,6 +3,7 @@
     - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
     - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube)
 2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files.
+3. [Star this repo ⭐](https://github.com/isaacbernat/netflix-to-srt#star-this-repo)
 
 ## Get the subtitles
 ### From Netflix
@@ -68,7 +69,18 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
   - Copy your subtitle files in the same directory as `to_srt.py`
     - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
-- Enjoy! (And **star the repo** if you liked it ;D)
+- Enjoy! (And **star the repo ⭐** if you liked it ;D)
+
+## Star this repo
+If you like this project, please **star the repository ⭐**. It's free and it helps get visibility and future improvements.
+- You may skip the following step if you are already logged in Github.
+  - [Sign in](https://github.com/login) if you have an account.
+  - [Sign up](https://github.com/signup?source=login) if you don't have an account (it's free!).
+- Scroll to the top of this page or [open it in a new tab/window](https://github.com/isaacbernat/netflix-to-srt) and check the for a star icon (it's near the screen laterals)
+  - If the star icon is already yellow ⭐, congrats! It's already starred! You don't need to do anything else.
+  - If the star icon is empty ☆, you may click on it once, and it'll become yellow ⭐!
+- Thanks for your contribution!
+- TODO add screenshots
 
 ## Why this repository?
 VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same.
