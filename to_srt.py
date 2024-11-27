@@ -3,6 +3,7 @@ import codecs
 import math
 import os
 import re
+import html
 
 
 SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
@@ -170,6 +171,8 @@ def xml_to_srt(text):
 
         content = xml_cleanup_spans_end(
             span_end_re, content, has_cursive)
+
+        content = html.unescape(content)
 
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
