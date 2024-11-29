@@ -3,6 +3,7 @@ import codecs
 import math
 import os
 import re
+import html
 
 
 SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
@@ -171,6 +172,8 @@ def xml_to_srt(text):
         content = xml_cleanup_spans_end(
             span_end_re, content, has_cursive)
 
+        content = html.unescape(content)
+
         prev_start = prev_time["start"]
         start = re.search(start_re, s).group(1)
         end = re.search(end_re, s).group(1)
@@ -208,7 +211,7 @@ def main():
     for fn in filenames:
         with codecs.open(u"{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
-        with codecs.open(u"{}/{}.srt".format(a.output, fn), 'wb', "utf-8") as f:
+        with codecs.open(u"{}/{}.srt".format(a.output, fn[:fn.rfind('.')]), 'wb', "utf-8") as f:
             f.write(to_srt(text, fn[-4:]))
 
 
