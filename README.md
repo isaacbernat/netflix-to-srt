@@ -79,8 +79,9 @@ If you like this project, please **star the repository ⭐**. It's free and it h
 - Scroll to the top of this page or [open it in a new tab/window](https://github.com/isaacbernat/netflix-to-srt) and check the for a star icon (it's near the screen laterals)
   - If the star icon is already yellow ⭐, congrats! It's already starred! You don't need to do anything else.
   - If the star icon is empty ☆, you may click on it once, and it'll become yellow ⭐!
+  ![Wide screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/star_screenshot_desktop.png "Wide screenshot of the star icon")
+  ![Thin screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/star_screenshot_mobile.png "Thin screenshot of the star icon")
 - Thanks for your contribution!
-- TODO add screenshots
 
 ## Why this repository?
 VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same.
