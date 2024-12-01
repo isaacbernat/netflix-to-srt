@@ -7,7 +7,7 @@
 
 ## Get the subtitles
 ### From Netflix
- > **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube on how to to download and convert subtitles from Netflix](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome.[![YouTube link to the tutorial](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/tutorial.png "YouTube link to the tutorial")](https://www.youtube.com/watch?v=ZpejTczG8Ho)
+ > **Note:** There is a [video-tutorial covering all instructions step-by-step in Youtube on how to to download and convert subtitles from Netflix](https://www.youtube.com/watch?v=ZpejTczG8Ho) using Windows and Google Chrome.[![YouTube link to the tutorial](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/tutorial.png "YouTube link to the tutorial")](https://www.youtube.com/watch?v=ZpejTczG8Ho)
 
 ### Get subtitles from Netflix: method 1
 1. You need one of the following web browsers:
@@ -36,7 +36,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 4. Select the subtitle you want.
 5. In devtools sort by name and look for a file with `?o=` at the beginning of the name (see image below).
 
-<img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
+<img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/images/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
 
 ### Get subtitles from Netflix: method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
@@ -79,8 +79,8 @@ If you like this project, please **star the repository ⭐**. It's free and it h
 - Scroll to the top of this page or [open it in a new tab/window](https://github.com/isaacbernat/netflix-to-srt) and check the for a star icon (it's near the screen laterals)
   - If the star icon is already yellow ⭐, congrats! It's already starred! You don't need to do anything else.
   - If the star icon is empty ☆, you may click on it once, and it'll become yellow ⭐!
-  ![Wide screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/star_screenshot_desktop.png "Wide screenshot of the star icon")
-  ![Thin screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/star_screenshot_mobile.png "Thin screenshot of the star icon")
+  ![Wide screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/star_screenshot_desktop.png "Wide screenshot of the star icon")
+  ![Thin screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/star_screenshot_mobile.png "Thin screenshot of the star icon")
 - Thanks for your contribution!
 
 ## Why this repository?
