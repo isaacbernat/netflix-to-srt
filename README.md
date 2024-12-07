@@ -19,7 +19,8 @@
    - [Microsoft Edge addon](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
    - [Opera addon](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 3. Install [Netflix - subtitle downloader](https://greasyfork.org/en/scripts/26654-netflix-subtitle-downloader) script for Tampermonkey.
-4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_.![netflix](https://github.com/user-attachments/assets/32b9d509-35da-4f72-8339-6402a3814b68)
+4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_.
+![netflix](https://github.com/user-attachments/assets/f08db7d7-c543-4661-9525-40f5406d298e)
 
 ## Method 2
 You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not tested on other web browsers*
