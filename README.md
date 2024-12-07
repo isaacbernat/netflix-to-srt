@@ -32,8 +32,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 3. Load your movie/episode.
 4. Select the subtitle you want.
 5. In devtools sort by name and look for a file with `?o=` at the beginning of the name (see image below).
-
-<img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
+![chrome](https://github.com/user-attachments/assets/b815a02a-fe51-48be-91d2-43feab6efb3d)
 
 ## Method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
