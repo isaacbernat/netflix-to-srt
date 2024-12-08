@@ -23,7 +23,7 @@
    - [Microsoft Edge addon](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
    - [Opera addon](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 3. Install [Netflix - subtitle downloader](https://greasyfork.org/en/scripts/26654-netflix-subtitle-downloader) script for Tampermonkey.
-4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_.![netflix](https://github.com/user-attachments/assets/32b9d509-35da-4f72-8339-6402a3814b68)
+4. To download the subtitles file from Netflix, open the episode in Netflix and download them by clicking on _"Download subs from this episode"_ (see image below). ![Screenshot of "Download subs" option](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/netflix-tampermonkey-download-subs.png "Screenshot of 'Download subs' option")
 
 ### Get subtitles from Netflix: method 2
 You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not tested on other web browsers*
@@ -36,7 +36,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 4. Select the subtitle you want.
 5. In devtools sort by name and look for a file with `?o=` at the beginning of the name (see image below).
 
-<img src="https://github.com/isaacbernat/netflix-to-srt/blob/master/images/chrome_console.png?raw=true" alt="Chrome console screenshot" width="557px" height="607px">
+![Screenshot of Dev tools download](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/netflix-devtools-download-subs "Screenshot of Dev tools download")
 
 ### Get subtitles from Netflix: method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
