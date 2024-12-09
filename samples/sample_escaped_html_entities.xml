@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tt ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/imsc1.1/text" xmlns="http://www.w3.org/ns/ttml" xmlns:nttm="http://www.netflix.com/ns/ttml#metadata" xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:xml="http://www.w3.org/XML/1998/namespace" ttp:tickRate="10000000" ttp:timeBase="media" xml:lang="en">
+<head>
+<metadata nttm:Smpte24TimingAdjusted="true" nttm:schemaVersion="0" nttm:textType="CC"/>
+<styling>
+<initial tts:backgroundColor="transparent" tts:color="white" tts:displayAlign="after" tts:extent="80.000% 80.000%" tts:opacity="1.000" tts:origin="10.000% 10.000%" tts:showBackground="whenActive" tts:textAlign="center" tts:textOutline="black 0.300rh" tts:writingMode="lrtb"/>
+<style xml:id="style1" tts:fontStyle="italic"/>
+</styling>
+<layout>
+<region xml:id="region0" tts:displayAlign="after" tts:extent="80.000% 40.000%" tts:origin="10.000% 50.000%"/>
+<region xml:id="region1" tts:displayAlign="before" tts:extent="80.000% 40.000%" tts:origin="10.000% 10.000%"/>
+</layout>
+</head>
+<body>
+<div>
+<p xml:id="subtitle1" begin="11253742500t" end="11267923332t" region="region0">[&quot;Rebel Gene&quot; by Thomas Mudrick plays]</p>
+<p xml:id="subtitle2" begin="13326229582t" end="13363350000t" region="region0">I heard you say,<br/>&quot;What have you done with my husband?&quot;</p>
+<p xml:id="subtitle3" begin="20579308750t" end="20602665416t" region="region0">-Wow, honey.<br/>-&quot;Wow, honey.&quot;</p>
+<p xml:id="subtitle4" begin="21246642082t" end="21268330416t" region="region0">[&quot;Superstar&quot; by GRMLN plays]</p>
+<p xml:id="subtitle5" begin="23459269166t" end="23490550416t" region="region0">It's just a message<br/>written in ideogram, &quot;Let Man Go.&quot;</p>
+<p xml:id="subtitle6" begin="23491384582t" end="23516409582t" region="region0">Or, &quot;Let Him Go.&quot; I don't know.</p>
+</div>
+</body>
+</tt>
