@@ -1,5 +1,5 @@
-# How to get `.srt` subtitles from streaming media services
-1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) (`.xml` dfxp or `.vtt` files from Netflix, YouTube or other sources).
+# How to get `.srt` subtitles from streaming services
+1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) (`.xml` dfxp or `.vtt` files from Netflix, YouTube... streaming media services).
     - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
     - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube)
 2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files.
@@ -36,7 +36,7 @@ You need [Google Chrome](https://www.google.com/chrome/browser/desktop/). *not t
 4. Select the subtitle you want.
 5. In devtools sort by name and look for a file with `?o=` at the beginning of the name (see image below).
 
-![Screenshot of Dev tools download](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/netflix-devtools-download-subs "Screenshot of Dev tools download")
+![Screenshot of Dev tools download](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/netflix-devtools-download-subs.png "Screenshot of Dev tools download")
 
 ### Get subtitles from Netflix: method 3
 The information is extracted from [this post](http://forum.opensubtitles.org/viewtopic.php?t=15141).
