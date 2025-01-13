@@ -69,16 +69,36 @@ def xml_cleanup_spans_end(span_end_re, text, has_cursive):
     return text
 
 
-def to_srt(text, extension, delay):
+def to_srt(text, extension, delay_ms):
     if extension.lower() == ".xml":
         text = xml_to_srt(text)
     elif extension.lower() == ".vtt":
         text = vtt_to_srt(text)
-    return srt_to_srt(text, delay)
+    return shift_srt_timestamp(text, delay_ms)
 
 
-def srt_to_srt(text, delay):
-    return text
+def shift_srt_timestamp(text, delay_ms=0):
+    if not delay_ms:
+        return text
+
+    def shift_time(time_str, shift):
+        h, m, s_ms = time_str.split(":")
+        s, ms = s_ms.split(",")
+        total_ms = int(h)*3600000 + int(m)*60000 + int(s)*1000 + int(ms)
+        new_ms = total_ms + shift
+
+        h = new_ms // 3600000; new_ms %= 3600000
+        m = new_ms // 60000; new_ms %= 60000
+        s = new_ms // 1000; ms = new_ms % 1000
+        return f"{h:02}:{m:02}:{s:02},{ms:03}"
+
+    def replace_timestamp(match):
+        start = shift_time(match[1], delay_ms)
+        end = shift_time(match[2], delay_ms)
+        return f"{start} --> {end}" if start and end else match[0]
+
+    timestamp_regex = r"(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})"
+    return re.sub(timestamp_regex, replace_timestamp, text)
 
 
 def convert_vtt_time(line):
@@ -211,7 +231,7 @@ def main():
     parser.add_argument("-o", "--output", type=str, default=directory,
                         help=help_text.format("output", directory))
     parser.add_argument("-d", "--delay", type=int, default=0,
-                        help="delay all subtitles by the given number of miliseconds")
+                        help="delay all subtitles by the given number of milliseconds")
     a = parser.parse_args()
     filenames = [fn for fn in os.listdir(a.input)
                  if fn[-4:].lower() in SUPPORTED_EXTENSIONS]
