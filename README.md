@@ -2,7 +2,7 @@
 1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) (`.xml` dfxp or `.vtt` files from Netflix, YouTube... streaming media services).
     - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
     - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube)
-2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files.
+2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files (and/or shift timestamps).
 3. [Star this repo ⭐](https://github.com/isaacbernat/netflix-to-srt#star-this-repo)
 
 ## Get the subtitles
@@ -69,6 +69,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
   - Copy your subtitle files in the same directory as `to_srt.py`
     - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
+- *Optional:* Use `-d DELAY_MS` parameter when running the script to delay all the timestamps by the given number of milliseconds. Negative values shift timestamps backwards. Example: `python to_srt.py -i samples/delays -o samples/delays -d -1500` will take all the eligible files in `samples/delays` and shift the subtitles to be 1.5 seconds earlier than the original version
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
 ## Star this repo
@@ -84,7 +85,9 @@ If you like this project, please **star the repository ⭐**. It's free and it h
 - Thanks for your contribution!
 
 ## Why this repository?
-VLC player could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same.
+[VideoLAN's VLC media player](https://www.videolan.org/vlc/) could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same.
+
+Similarly, adjusting timestamps in 50ms increments was inconvenient using VLC's hotkeys (G, H and/or J) for large mismatches (e.g. 60 seconds because openings or summaries), so I added the `-d DELAY_MS` parameter so I could "advance" all the subtitles lines easily.
 
 ## TODOs
 - More robust file parsing than just some quick and dirty regexes.
