@@ -6,7 +6,7 @@ import re
 import html
 
 
-SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
+SUPPORTED_EXTENSIONS = [".xml", ".vtt", ".srt"]
 
 
 def leading_zeros(value, digits=2):
