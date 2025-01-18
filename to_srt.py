@@ -6,7 +6,7 @@ import re
 import html
 
 
-SUPPORTED_EXTENSIONS = [".xml", ".vtt"]
+SUPPORTED_EXTENSIONS = [".xml", ".vtt", ".srt"]
 
 
 def leading_zeros(value, digits=2):
@@ -69,11 +69,36 @@ def xml_cleanup_spans_end(span_end_re, text, has_cursive):
     return text
 
 
-def to_srt(text, extension):
+def to_srt(text, extension, delay_ms):
     if extension.lower() == ".xml":
-        return xml_to_srt(text)
-    if extension.lower() == ".vtt":
-        return vtt_to_srt(text)
+        text = xml_to_srt(text)
+    elif extension.lower() == ".vtt":
+        text = vtt_to_srt(text)
+    return shift_srt_timestamp(text, delay_ms)
+
+
+def shift_srt_timestamp(text, delay_ms=0):
+    if not delay_ms:
+        return text
+
+    def shift_time(time_str, shift):
+        h, m, s_ms = time_str.split(":")
+        s, ms = s_ms.split(",")
+        total_ms = int(h)*3600000 + int(m)*60000 + int(s)*1000 + int(ms)
+        new_ms = total_ms + shift
+
+        h = new_ms // 3600000; new_ms %= 3600000
+        m = new_ms // 60000; new_ms %= 60000
+        s = new_ms // 1000; ms = new_ms % 1000
+        return f"{h:02}:{m:02}:{s:02},{ms:03}"
+
+    def replace_timestamp(match):
+        start = shift_time(match[1], delay_ms)
+        end = shift_time(match[2], delay_ms)
+        return f"{start} --> {end}" if start and end else match[0]
+
+    timestamp_regex = r"(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})"
+    return re.sub(timestamp_regex, replace_timestamp, text)
 
 
 def convert_vtt_time(line):
@@ -205,6 +230,8 @@ def main():
                         help=help_text.format("input", directory))
     parser.add_argument("-o", "--output", type=str, default=directory,
                         help=help_text.format("output", directory))
+    parser.add_argument("-d", "--delay", type=int, default=0,
+                        help="delay all subtitles by the given number of milliseconds")
     a = parser.parse_args()
     filenames = [fn for fn in os.listdir(a.input)
                  if fn[-4:].lower() in SUPPORTED_EXTENSIONS]
@@ -212,7 +239,7 @@ def main():
         with codecs.open(u"{}/{}".format(a.input, fn), 'rb', "utf-8") as f:
             text = f.read()
         with codecs.open(u"{}/{}.srt".format(a.output, fn[:fn.rfind('.')]), 'wb', "utf-8") as f:
-            f.write(to_srt(text, fn[-4:]))
+            f.write(to_srt(text, fn[-4:], a.delay))
 
 
 if __name__ == '__main__':
