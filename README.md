@@ -69,7 +69,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
   - Copy your subtitle files in the same directory as `to_srt.py`
     - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
   - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
-- *Optional:* Use `-d DELAY_MS` parameter when running the script to delay all the timestamps by the given number of milliseconds. Negative values shift timestamps backwards. Example: `python to_srt.py -i samples/delays -o samples/delays -d -1500` will take all the eligible files in `samples/delays` and shift the subtitles to be 1.5 seconds earlier than the original version
+- *Optional:* Use `-d DELAY_MS` parameter when running the script to delay all the timestamps by the given number of milliseconds. Negative values shift timestamps backwards. Example: `python to_srt.py -i samples/delays -o samples/delays -d -1500` will take all the eligible files in `samples/delays` and shift the resulting `.srt` subtitles to be 1.5 seconds earlier than the original version
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
 ## Star this repo
