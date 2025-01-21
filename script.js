@@ -6,29 +6,32 @@ document.getElementById('convertButton').addEventListener('click', function() {
         output.textContent = 'Please select a valid XML, VTT or SRT file.';
         return;
     }
-    const file = fileInput.files[0];
-    const reader = new FileReader();
 
-    reader.onload = function(event) {
-        const xmlText = event.target.result;
-        const srtText = toSrt(xmlText, file.name.slice(-4), 0);
-        output.textContent = srtText;
+    for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        const reader = new FileReader();
 
-        // Create a Blob for the SRT text
-        const blob = new Blob([srtText], { type: 'text/srt' });
-        const url = URL.createObjectURL(blob);
+        reader.onload = function(event) {
+            const xmlText = event.target.result;
+            const srtText = toSrt(xmlText, file.name.slice(-4), 0);
+            output.textContent += srtText + "\n\n";
 
-        // Create a download link
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name.replace(/\.[^/.]+$/, "") + ".srt"; // Append .srt to the original filename
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url); // Clean up the URL object
-    };
+            // Create a Blob for the SRT text
+            const blob = new Blob([srtText], { type: 'text/srt' });
+            const url = URL.createObjectURL(blob);
 
-    reader.readAsText(file);
+            // Create a download link
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name.replace(/\.[^/.]+$/, "") + ".srt"; // Append .srt to the original filename
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url); // Clean up the URL object
+        };
+
+        reader.readAsText(file);
+    }
 });
 
 // Function to add leading zeros
