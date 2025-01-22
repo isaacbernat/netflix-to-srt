@@ -82,10 +82,16 @@ function xmlCleanupSpansStart(spanIdRe, cursiveIds, text) {
     const hasCursive = [];
     const spanStartTags = text.match(spanIdRe);
     if (spanStartTags) {
-        spanStartTags.forEach(s => {
+        for (let i = 0; i < spanStartTags.length; i++) {
+            const s = spanStartTags[i];
             hasCursive.push(cursiveIds.includes(s[1]) ? '<i>' : '');
-            text = hasCursive[hasCursive.length - 1] + text.split(s[0], 1).join('');
-        });
+
+            let maxSplit = 1; // javascript split has different optionals than Python!
+            let result = text.split(s).slice(0, maxSplit); // +1 to include the remainder
+            result.push(text.split(s).slice(maxSplit).join(s)); // Join the remainder
+
+            text = hasCursive[hasCursive.length - 1] + result.join('');
+        }
     }
     return [text, hasCursive];
 }
@@ -93,10 +99,16 @@ function xmlCleanupSpansStart(spanIdRe, cursiveIds, text) {
 function xmlCleanupSpansEnd(spanEndRe, text, hasCursive) {
     const spanEndTags = text.match(spanEndRe);
     if (spanEndTags) {
-        spanEndTags.forEach((s, index) => {
-            const cursive = hasCursive[index] ? '</i>' : '';
-            text = text.split(s, 1).join(cursive);
-        });
+        for (let i = 0; i < spanEndTags.length; i++) {
+            const s = spanEndTags[i];
+            const cursive = hasCursive[i] ? '</i>' : '';
+
+            let maxSplit = 1; // javascript split has different optionals than Python!
+            let result = text.split(s).slice(0, maxSplit); // +1 to include the remainder
+            result.push(text.split(s).slice(maxSplit).join(s)); // Join the remainder
+
+            text = result.join(cursive);
+        }
     }
     return text;
 }
@@ -247,7 +259,6 @@ function xmlToSrt(text) {
         }
 
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
-        content = decodeURIComponent(escape(content));
 
         const prevStart = prevTime.start;
         start = s.match(startRe)[1];
