@@ -57,9 +57,13 @@ function convertTime(rawTime) {
     return `${hour}:${minute}:${second},${ms}`;
 }
 
-// Function to extract xml id for display alignment
 function xmlIdDisplayAlignBefore(text) {
-    const alignBeforeRe = /<region.*tts:displayAlign=\\"before\\".*id=\\"(.*?)\\"/g;
+    /*
+    displayAlign="before" means the current sub will be displayed on top.
+    That is and not at bottom. We check what's the xml:id associated to it
+    to have an {\an8} position tag in the output file.
+    */
+    const alignBeforeRe = /<region.*tts:displayAlign="before".*xml:id="(.*)"/;
     const match = alignBeforeRe.exec(text);
     return match && match[1];
 }
