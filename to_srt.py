@@ -16,7 +16,7 @@ def leading_zeros(value, digits=2):
 
 def convert_time(raw_time):
     if int(raw_time) == 0:
-        return "{}:{}:{},{}".format(0, 0, 0, 0)
+        return "00:00:00,000"
 
     ms = '000'
     if len(raw_time) > 4:
