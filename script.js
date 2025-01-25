@@ -88,13 +88,12 @@ function xmlCleanupSpansStart(spanIdRe, cursiveIds, text) {
     if (spanStartTags) {
         for (let i = 0; i < spanStartTags.length; i++) {
             const s = spanStartTags[i];
-            hasCursive.push(cursiveIds.includes(s[1]) ? '<i>' : '');
+            hasCursive.push((cursiveIds.length && s.includes(cursiveIds)) ? '<i>' : '');
 
             let maxSplit = 1; // javascript split has different optionals than Python!
             let result = text.split(s).slice(0, maxSplit); // +1 to include the remainder
             result.push(text.split(s).slice(maxSplit).join(s)); // Join the remainder
-
-            text = hasCursive[hasCursive.length - 1] + result.join('');
+            text =  result.join(hasCursive[hasCursive.length - 1]);
         }
     }
     return [text, hasCursive];
@@ -239,8 +238,8 @@ function xmlToSrt(text) {
     const contentRe = />.*<\/p>/;
 
     const cursiveIds = xmlGetCursiveStyleIds(text);
-    const spanIdRe = /(<span style="([a-zA-Z0-9_.]+)">)+/;
-    const spanEndRe = /(<\/span>)+/;
+    const spanIdRe = /<span style="([a-zA-Z0-9_.]+)">+/g;
+    const spanEndRe = /<\/span>+/g;
     const brRe = /(<br\s*\/?>)+/;
     let fmtT = true;
 
