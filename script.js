@@ -263,6 +263,10 @@ function xmlToSrt(text) {
 
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
 
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html');
+        content = doc.body.textContent || "";
+
         const prevStart = prevTime.start;
         start = s.match(startRe)[1];
         end = s.match(endRe)[1];
