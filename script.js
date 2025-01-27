@@ -153,7 +153,7 @@ function shiftSrtTimestamp(text, delayMs = 0) {
 }
 
 function convertVttTime(line) {
-    let times = line.replace(".", ",").split(" --> ");
+    let times = line.replace(/\./g, ",").split(" --> ");
     if (times[0].length === 9) {
         times = ["00:" + times[0], times[1]];
     }
