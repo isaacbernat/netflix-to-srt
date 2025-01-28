@@ -260,12 +260,13 @@ function xmlToSrt(text) {
         if (brTags) {
             content = content.split(brTags[0]).join("\n");
         }
-
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
 
-        const parser = new DOMParser();
+        const parser = new DOMParser();  // convert HTML entities to characters, keepin <i> and such
         const doc = parser.parseFromString(content, 'text/html');
-        content = doc.body.textContent || "";
+        const serializer = new XMLSerializer();
+        content = serializer.serializeToString(doc.body);
+        content = content.replace(/<body[^>]*>(.*?)<\/body>/s, '$1')
 
         const prevStart = prevTime.start;
         start = s.match(startRe)[1];
