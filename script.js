@@ -154,9 +154,10 @@ function shiftSrtTimestamp(text, delayMs = 0) {
 
 function convertVttTime(line) {
     let times = line.replace(/\./g, ",").split(" --> ");
-    if (times[0].length === 9) {
-        times = ["00:" + times[0], times[1]];
-    }
+    times = [
+        times[0].length === 9 ? "00:" + times[0] : times[0],
+        times[1].length === 9 ? "00:" + times[1] : times[1]
+    ];
     return `${times[0]} --> ${times[1].split(" ")[0]}`;
 }
 
@@ -262,7 +263,7 @@ function xmlToSrt(text) {
         }
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
 
-        const parser = new DOMParser();  // convert HTML entities to characters, keepin <i> and such
+        const parser = new DOMParser();  // convert HTML entities to characters, keeping <i> and such
         const doc = parser.parseFromString(content, 'text/html');
         const serializer = new XMLSerializer();
         content = serializer.serializeToString(doc.body);
