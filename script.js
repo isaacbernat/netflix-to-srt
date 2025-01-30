@@ -6,14 +6,14 @@ document.getElementById('convertButton').addEventListener('click', function() {
         output.textContent = 'Please select a valid XML, VTT or SRT file.';
         return;
     }
-
+    const timeshiftMilliseconds = parseInt(document.getElementById('timeshift').value, 10);
     for (let i = 0; i < fileInput.files.length; i++) {
         const file = fileInput.files[i];
         const reader = new FileReader();
 
         reader.onload = function(event) {
             const xmlText = event.target.result;
-            const srtText = toSrt(xmlText, file.name.slice(-4), 0);
+            const srtText = toSrt(xmlText, file.name.slice(-4), timeshiftMilliseconds);
             output.textContent += srtText + "\n\n";
 
             // Create a Blob for the SRT text
@@ -143,12 +143,14 @@ function shiftSrtTimestamp(text, delayMs = 0) {
     }
 
     function replaceTimestamp(match) {
-        const start = shiftTime(match[1], delayMs);
-        const end = shiftTime(match[2], delayMs);
+        start_end_regex = /(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})/;
+        start_end = match.match(start_end_regex);
+        const start = shiftTime(start_end[1], delayMs);
+        const end = shiftTime(start_end[2], delayMs);
         return (start && end) ? `${start} --> ${end}` : match[0];
     }
 
-    const timestampRegex = /(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})/g;
+    const timestampRegex = /(?:(\d{2}:\d{2}:\d{2},\d{3})\s-->\s(\d{2}:\d{2}:\d{2},\d{3}))/g;
     return text.replace(timestampRegex, replaceTimestamp);
 }
 
