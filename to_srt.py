@@ -124,7 +124,7 @@ def vtt_to_srt(text):
                     line = style_tag.group(2)  # line is just the text part
                     color = styles.get(style_tag.group(1).split(".")[0])
                     if color:
-                        line = u"<font color={}>{}</font>".format(
+                        line = u'<font color="{}">{}</font>'.format(
                             color, line)
                 current_sub_line.append(line)
             else:
