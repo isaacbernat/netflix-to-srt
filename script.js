@@ -1,11 +1,5 @@
 document.getElementById('convertButton').addEventListener('click', function() {
     const fileInput = document.getElementById('fileInput');
-    const output = document.getElementById('output');
-
-    if (fileInput.files.length === 0) {
-        output.textContent = 'Please select a valid XML, VTT or SRT file.';
-        return;
-    }
     const timeshiftMilliseconds = parseInt(document.getElementById('timeshift').value, 10);
     for (let i = 0; i < fileInput.files.length; i++) {
         const file = fileInput.files[i];
@@ -14,13 +8,9 @@ document.getElementById('convertButton').addEventListener('click', function() {
         reader.onload = function(event) {
             const xmlText = event.target.result;
             const srtText = toSrt(xmlText, file.name.slice(-4), timeshiftMilliseconds);
-            output.textContent += srtText + "\n\n";
 
-            // Create a Blob for the SRT text
             const blob = new Blob([srtText], { type: 'text/srt' });
             const url = URL.createObjectURL(blob);
-
-            // Create a download link
             const a = document.createElement('a');
             a.href = url;
             a.download = file.name.replace(/\.[^/.]+$/, "") + ".srt"; // Append .srt to the original filename
@@ -29,23 +19,19 @@ document.getElementById('convertButton').addEventListener('click', function() {
             document.body.removeChild(a);
             URL.revokeObjectURL(url); // Clean up the URL object
         };
-
         reader.readAsText(file);
     }
 });
 
-// Function to add leading zeros
 function leadingZeros(value, digits = 2) {
     value = '000000' + String(value);
     return value.slice(-digits);
 }
 
-// Convert raw time to SRT format
 function convertTime(rawTime) {
     if (parseInt(rawTime) === 0) {
         return '00:00:00,000';
     }
-
     let ms = '000';
     if (rawTime.length > 4) {
         ms = leadingZeros(parseInt(rawTime.slice(0, -4)) % 1000, 3);
@@ -195,7 +181,6 @@ function vttToSrt(text) {
     if (currentSubLine.length) {
         lines.push(currentSubLine.join("\n"));
     }
-
     return lines.map((l, i) => `${i + 1}\n${l}`).join("");
 }
 
