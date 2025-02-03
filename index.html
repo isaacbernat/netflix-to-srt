@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert subtitles to SRT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Convert subtitles to .SRT</h1>
+        <input type="file" id="fileInput" accept=".xml,.XML,.vtt,.VTT,.srt,.SRT" multiple>
+        <button id="convertButton">Convert (max 10 files)</button>
+        <label for="timeshift">Timeshift (in milliseconds):</label>
+        <input type="number" id="timeshift" name="timeshift" step="100" value="0">
+        <p>Please star the <a href="https://github.com/isaacbernat/netflix-to-srt#star-this-repo" target="_blank">GitHub repository ⭐</a> if this was useful!</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

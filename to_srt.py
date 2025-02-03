@@ -16,7 +16,7 @@ def leading_zeros(value, digits=2):
 
 def convert_time(raw_time):
     if int(raw_time) == 0:
-        return "{}:{}:{},{}".format(0, 0, 0, 0)
+        return "00:00:00,000"
 
     ms = '000'
     if len(raw_time) > 4:
@@ -124,7 +124,7 @@ def vtt_to_srt(text):
                     line = style_tag.group(2)  # line is just the text part
                     color = styles.get(style_tag.group(1).split(".")[0])
                     if color:
-                        line = u"<font color={}>{}</font>".format(
+                        line = u'<font color="{}">{}</font>'.format(
                             color, line)
                 current_sub_line.append(line)
             else:
