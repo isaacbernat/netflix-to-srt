@@ -1,8 +1,10 @@
 # How to get `.srt` subtitles from streaming services
-<div style="text-align: center;">
-  <a href="https://isaacbernat.github.io/netflix-to-srt/" style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px;">Click here to convert your subs</a>
-</div>
+<div align="center">
+
+<kbd> <br> [Click here to convert your subs][Link] <br> </kbd>
+
 Or follow the instructions below:
+</div>
 
 1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) (`.xml` dfxp or `.vtt` files from Netflix, YouTube... streaming media services).
     - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
@@ -115,3 +117,5 @@ In no way I am encouraging any kind of illegal activity. Please know your local 
 
 ## Contributing
 Contributions are welcome. Feel free to create a Pull Request. Your help will make this project even better for everyone.
+
+[Link]: https://isaacbernat.github.io/netflix-to-srt/
