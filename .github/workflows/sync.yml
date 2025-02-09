@@ -1,0 +1,44 @@
+name: Sync Website Repo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync-website:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Website Repo # Checkout Website Repo FIRST
+        uses: actions/checkout@v3
+        with:
+          repository: isaacbernat/netflix-to-srt-web
+          path: website # Checkout into a subdirectory
+
+      - name: Checkout Development Repo
+        uses: actions/checkout@v3
+        with:
+          repository: isaacbernat/netflix-to-srt
+          path: dev_repo
+
+      - name: Configure Git
+        run: |
+          cd website
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Copy Web Files
+        run: |
+          cd dev_repo
+          cp index.html ../website/
+          cp script.js ../website/
+          cp styles.css ../website/
+
+      - name: Commit and Push Changes to Website Repo
+        run: |
+          cd website
+          git add . # Add all changed files in the website directory
+          git commit -m "Updated website from dev repo"
+          git push origin main # Push to the main branch of the Website Repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
