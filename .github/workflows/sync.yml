@@ -42,6 +42,7 @@ jobs:
           cp index.html ../website/
           cp script.js ../website/
           cp style.css ../website/
+          cp robots.txt ../website/
 
       - name: Commit and Push Changes to Website Repo
         run: |
