@@ -32,7 +32,7 @@ jobs:
           cd dev_repo
           cp index.html ../website/
           cp script.js ../website/
-          cp styles.css ../website/
+          cp style.css ../website/
 
       - name: Commit and Push Changes to Website Repo
         run: |
