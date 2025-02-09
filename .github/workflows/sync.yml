@@ -15,23 +15,20 @@ jobs:
           repository: isaacbernat/netflix-to-srt-web
           path: website
 
-      - name: Checkout Development Repo
-        uses: actions/checkout@v3
-        with:
-          repository: isaacbernat/netflix-to-srt
-          path: dev_repo
+      - name: Start SSH Agent
+        run: eval "$(ssh-agent -s)"
 
       - name: Deploy Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.DEPLOY_KEY }}
-          known_hosts: just_accept
+          known_hosts: 'just_accept'
 
       - name: Check SSH Agent
         run: ssh-add -l
-  
+
       - name: Test SSH Connection
-        run: ssh -T git@github.com # Try to connect to GitHub using SSH
+        run: ssh -T git@github.com
 
       - name: Configure Git
         run: |
