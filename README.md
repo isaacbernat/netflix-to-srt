@@ -73,7 +73,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ## Convert them into .srt
 ### Using your web browser
-- Go to [isaacbernat.github.io/netflix-to-srt](https://isaacbernat.github.io/netflix-to-srt)
+- Go to [netflix-to-srt.pages.dev](https://netflix-to-srt.pages.dev)
 - Upload the subtitles and click convert
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
@@ -118,4 +118,4 @@ In no way I am encouraging any kind of illegal activity. Please know your local 
 ## Contributing
 Contributions are welcome. Feel free to create a Pull Request. Your help will make this project even better for everyone.
 
-[Link]: https://isaacbernat.github.io/netflix-to-srt/
+[Link]: https://netflix-to-srt.pages.dev/
