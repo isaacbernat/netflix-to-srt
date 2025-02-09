@@ -16,19 +16,21 @@ jobs:
           path: website
 
       - name: Start SSH Agent
-        run: eval "$(ssh-agent -s)"
+        uses: actions/setup-ssh-agent@v3
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+  
+      - name: Check SSH Agent
+        run: ssh-add -l
+  
+      - name: Test SSH Connection
+        run: ssh -T git@github.com
 
       - name: Deploy Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.DEPLOY_KEY }}
           known_hosts: 'just_accept'
-
-      - name: Check SSH Agent
-        run: ssh-add -l
-
-      - name: Test SSH Connection
-        run: ssh -T git@github.com
 
       - name: Configure Git
         run: |
