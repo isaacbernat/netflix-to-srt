@@ -9,17 +9,22 @@ jobs:
   sync-website:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Website Repo # Checkout Website Repo FIRST
+      - name: Checkout Website Repo
         uses: actions/checkout@v3
         with:
           repository: isaacbernat/netflix-to-srt-web
-          path: website # Checkout into a subdirectory
+          path: website
 
       - name: Checkout Development Repo
         uses: actions/checkout@v3
         with:
           repository: isaacbernat/netflix-to-srt
           path: dev_repo
+
+      - name: Deploy Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Configure Git
         run: |
@@ -37,8 +42,6 @@ jobs:
       - name: Commit and Push Changes to Website Repo
         run: |
           cd website
-          git add . # Add all changed files in the website directory
+          git add .
           git commit -m "Updated website from dev repo"
-          git push origin main # Push to the main branch of the Website Repo
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push origin main
