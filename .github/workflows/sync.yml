@@ -25,6 +25,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.DEPLOY_KEY }}
+          known_hosts: 'just_accept'
 
       - name: Configure Git
         run: |
