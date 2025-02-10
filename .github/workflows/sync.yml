@@ -10,27 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Website Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: isaacbernat/netflix-to-srt-web
           path: website
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Start SSH Agent
-        uses: actions/setup-ssh-agent@v3
+      - name: Checkout Development Repo
+        uses: actions/checkout@v4
         with:
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
-  
-      - name: Check SSH Agent
-        run: ssh-add -l
-  
-      - name: Test SSH Connection
-        run: ssh -T git@github.com
+          repository: isaacbernat/netflix-to-srt
+          path: dev_repo
 
-      - name: Deploy Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.DEPLOY_KEY }}
-          known_hosts: 'just_accept'
+      - name: Set up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_rsa # Add the key to the agent
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no"
 
       - name: Configure Git
         run: |
