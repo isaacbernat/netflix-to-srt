@@ -50,4 +50,4 @@ jobs:
           cd website
           git add .
           git commit -m "Updated website from dev repo"
-          git push origin main
+          git push git@github.com:isaacbernat/netflix-to-srt-web.git main
