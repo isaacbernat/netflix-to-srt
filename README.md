@@ -10,7 +10,7 @@ Or follow the instructions below:
     - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
     - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube)
 2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files (and/or shift timestamps).
-    - [Using your web browser](https://github.com/isaacbernat/netflix-to-srt#using-your-web-browser) (easiest to use)
+    - [Using your web browser](https://github.com/isaacbernat/netflix-to-srt#using-your-web-browser) (easiest)
     - [Using Python](https://github.com/isaacbernat/netflix-to-srt#using-python) (better for big batches and automation)
 3. [Star this repo ⭐](https://github.com/isaacbernat/netflix-to-srt#star-this-repo)
 
@@ -73,7 +73,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ## Convert them into .srt
 ### Using your web browser
-- Go to [netflix-to-srt.pages.dev](https://netflix-to-srt.pages.dev)
+- Go to [netflix-to-srt.pages.dev](https://netflix-to-srt.pages.dev) (or alternatively [isaacbernat.github.io/netflix-to-srt-web](https://isaacbernat.github.io/netflix-to-srt-web))
 - Upload the subtitles and click convert
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
