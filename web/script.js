@@ -23,6 +23,16 @@ document.getElementById('convertButton').addEventListener('click', function() {
     }
 });
 
+function setTheme() {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (prefersDarkScheme) {
+        document.body.classList.add("dark");
+    } else {
+        document.body.classList.add("light");
+    }
+}
+setTheme();
+
 function leadingZeros(value, digits = 2) {
     value = '000000' + String(value);
     return value.slice(-digits);
