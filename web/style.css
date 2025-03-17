@@ -5,10 +5,31 @@ body {
     padding: 20px;
 }
 
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark a {
+    color: #1e90ff;
+}
+
+body.dark a:hover {
+    color: #87cefa;
+}
+
+body.dark .container {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
 .container {
     max-width: 600px;
     margin: auto;
-    background: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
