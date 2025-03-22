@@ -99,6 +99,21 @@ If you like this project, please **star the repository ⭐**. It's free and it h
   ![Thin screenshot of the star icon](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/star_screenshot_mobile.png "Thin screenshot of the star icon")
 - Thanks for your contribution!
 
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_dark.png"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_light.png"
+  />
+  <img
+    alt="Star History Chart"
+    src="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_light.png"
+  />
+</picture>
+
 ## Why this repository?
 [VideoLAN's VLC media player](https://www.videolan.org/vlc/) could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same. Other features like font colors and styles are partially supported. Feel free to [create an Issue](https://github.com/isaacbernat/netflix-to-srt/issues) or Pull Request for more.
 
