@@ -165,15 +165,15 @@ def xml_to_srt(text):
         })
 
     display_align_before = xml_id_display_align_before(text)
-    begin_re = re.compile(u"(?=.*begin\=)\s*<p\s(?=.*>)")
-    sub_lines = (l for l in text.split("\n") if re.search(begin_re, l))
+    p_tag_re = re.compile(r'(<p\s[^>]*begin=[^>]*>.*?</p>)', re.DOTALL)
+    sub_lines = p_tag_re.findall(text)
     subs = []
     prev_time = {"start": 0, "end": 0}
     prev_content = []
     start = end = ''
     start_re = re.compile(u'begin\="([0-9:\.]*)')
     end_re = re.compile(u'end\="([0-9:\.]*)')
-    content_re = re.compile(u'\">(.*)</p>')
+    content_re = re.compile(r'\">(.*)</p>', re.DOTALL)
 
     # some span tags are used for italics, we'll replace them by <i> and </i>,
     # which is the standard for .srt files. We ignore all other uses.
