@@ -84,12 +84,10 @@ function xmlCleanupSpansStart(spanIdRe, cursiveIds, text) {
     if (spanStartTags) {
         for (let i = 0; i < spanStartTags.length; i++) {
             const s = spanStartTags[i];
-            hasCursive.push((cursiveIds.length && s.includes(cursiveIds)) ? '<i>' : '');
-
-            let maxSplit = 1; // javascript split has different optionals than Python!
-            let result = text.split(s).slice(0, maxSplit); // +1 to include the remainder
-            result.push(text.split(s).slice(maxSplit).join(s)); // Join the remainder
-            text =  result.join(hasCursive[hasCursive.length - 1]);
+            const isCursive = (cursiveIds.length && cursiveIds.some(id => s.includes(id)));
+            hasCursive.push(isCursive ? '<i>' : '');
+            const replacement = hasCursive[hasCursive.length - 1];
+            text = text.replace(s, replacement);
         }
     }
     return [text, hasCursive];
@@ -101,12 +99,7 @@ function xmlCleanupSpansEnd(spanEndRe, text, hasCursive) {
         for (let i = 0; i < spanEndTags.length; i++) {
             const s = spanEndTags[i];
             const cursive = hasCursive[i] ? '</i>' : '';
-
-            let maxSplit = 1; // javascript split has different optionals than Python!
-            let result = text.split(s).slice(0, maxSplit); // +1 to include the remainder
-            result.push(text.split(s).slice(maxSplit).join(s)); // Join the remainder
-
-            text = result.join(cursive);
+            text = text.replace(s, cursive);  // Replace only the first occurrence found
         }
     }
     return text;
@@ -224,8 +217,8 @@ function xmlToSrt(text) {
     }
 
     const displayAlignBefore = xmlIdDisplayAlignBefore(text);
-    const beginRe = /(?=.*begin=)\s*<p\s(?=.*>)/;
-    const subLines = text.split("\n").filter(line => beginRe.test(line));
+    const pTagRe = /<p\s[^>]*begin=[^>]*>[\s\S]*?<\/p>/g;
+    const subMatches = text.match(pTagRe) || [];
     const subs = [];
     let prevTime = { start: 0, end: 0 };
     let prevContent = [];
@@ -233,42 +226,53 @@ function xmlToSrt(text) {
     let end = '';
     const startRe = /begin="([0-9:.]*)/;
     const endRe = /end="([0-9:.]*)/;
-    const contentRe = />.*<\/p>/;
-
     const cursiveIds = xmlGetCursiveStyleIds(text);
     const spanIdRe = /<span style="([a-zA-Z0-9_.]+)">+/g;
     const spanEndRe = /<\/span>+/g;
-    const brRe = /(<br\s*\/?>)+/;
+    const brRe = /(<br\s*\/?>)+/g; // Global flag needed for replaceAll behavior
     let fmtT = true;
 
-    for (let s of subLines) {
+    for (let s of subMatches) {
+        s = s.replace(/[\r\n\t]+/g, ' ');
         const [cleanedString, hasCursive] = xmlCleanupSpansStart(spanIdRe, cursiveIds, s);
         s = cleanedString;
 
-        const stringRegionRe = new RegExp(`<p(.*region="${displayAlignBefore}".*")>(.*)</p>`);
-        if (!s) {
-            continue;
+        // Handle Positioning (an8)
+        if (displayAlignBefore) {
+            const stringRegionRe = new RegExp(`<p(.*region="${displayAlignBefore}".*")>(.*)</p>`);
+            s = s.replace(stringRegionRe, `<p$1>{\\an8}$2</p>`);
         }
-        
-        s = s.replace(stringRegionRe, `<p$1>{\\an8}$2</p>`);
-        const contentMatch = s.match(contentRe);
-        let content = contentMatch ? contentMatch[0].slice(1, -4) : '';
 
-        const brTags = content.match(brRe);
-        if (brTags) {
-            content = content.split(brTags[0]).join("\n");
+        // Extract content
+        const contentMatch = s.match(/>(.*)<\/p>/);
+        let content = contentMatch ? contentMatch[1] : '';
+
+        // Handle Line Breaks (<br/>)
+        if (content.match(brRe)) {
+            content = content.replace(brRe, "\n");
         }
+
+        // Handle Spans (Italics) closing tags
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
 
-        const parser = new DOMParser();  // convert HTML entities to characters, keeping <i> and such
+        // HTML Entity Decoding (e.g. &quot; -> ") and formatting
+        const parser = new DOMParser();
         const doc = parser.parseFromString(content, 'text/html');
         const serializer = new XMLSerializer();
-        content = serializer.serializeToString(doc.body);
-        content = content.replace(/<body[^>]*>(.*?)<\/body>/s, '$1')
+        const serialized = serializer.serializeToString(doc.body);
+        // Remove the <body> wrapper added by the serializer
+        content = serialized.replace(/^<body[^>]*>/, '').replace(/<\/body>$/, '');
 
+        // Extract Time
         const prevStart = prevTime.start;
-        start = s.match(startRe)[1];
-        end = s.match(endRe)[1];
+        const startMatch = s.match(startRe);
+        const endMatch = s.match(endRe);
+
+        if (!startMatch || !endMatch) continue;
+
+        start = startMatch[1];
+        end = endMatch[1];
+
         if (start.split(":").length > 1) {
             fmtT = false;
             start = start.replace(".", ",");
@@ -283,8 +287,12 @@ function xmlToSrt(text) {
         prevTime = { start: start, end: end };
         prevContent = [content];
     }
-    appendSubs(start, end, prevContent, fmtT);
+    // Append the last subtitle
+    if (start && end) {
+        appendSubs(start, end, prevContent, fmtT);
+    }
 
+    // Format final SRT string
     const lines = subs.map((sub, index) => `${index + 1}\n${sub.start_time} --> ${sub.end_time}\n${sub.content}\n`);
     return lines.join("\n");
 }
