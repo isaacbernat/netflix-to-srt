@@ -34,7 +34,7 @@ def xml_id_display_align_before(text):
     That is and not at bottom. We check what's the xml:id associated to it
     to have an {\an8} position tag in the output file.
     """
-    align_before_re = re.compile(u'<region.*tts:displayAlign=\"before\".*xml:id=\"(.*)\"/>')
+    align_before_re = re.compile(r'<region.*tts:displayAlign=\"before\".*xml:id=\"(.*)\"/>')
     has_align_before = re.search(align_before_re, text)
     if has_align_before:
         return has_align_before.group(1)
@@ -112,7 +112,7 @@ def vtt_to_srt(text):
     if not text.startswith(u"\ufeffWEBVTT") and not text.startswith(u"WEBVTT"):
         raise Exception(".vtt format must start with WEBVTT, wrong file?")
     styles = get_vtt_styles(text)
-    style_tag_re = re.compile(u'<c\.(.*)>(.*)</c>')
+    style_tag_re = re.compile(r'<c\.(.*)>(.*)</c>')
 
     lines = []
     current_sub_line = []
@@ -124,7 +124,7 @@ def vtt_to_srt(text):
                     line = style_tag.group(2)  # line is just the text part
                     color = styles.get(style_tag.group(1).split(".")[0])
                     if color:
-                        line = u'<font color="{}">{}</font>'.format(
+                        line = r'<font color="{}">{}</font>'.format(
                             color, line)
                 current_sub_line.append(line)
             else:
@@ -143,8 +143,8 @@ def get_vtt_styles(text):  # just using it for color ATM
     styles = {}
     lines = text.split("\n")
     n = 0
-    style_name_re = re.compile(u'::cue\(\.(.*)\).*')
-    color_re = re.compile(u'.*color: (\#.*);')
+    style_name_re = re.compile(r'::cue\(\.(.*)\).*')
+    color_re = re.compile(r'.*color: (\#.*);')
     while n < len(lines):  # not efficient to go through all text, but it's ok
         style_name = re.search(style_name_re, lines[n])
         if style_name and style_name.groups():
@@ -171,16 +171,16 @@ def xml_to_srt(text):
     prev_time = {"start": 0, "end": 0}
     prev_content = []
     start = end = ''
-    start_re = re.compile(u'begin\="([0-9:\.]*)')
-    end_re = re.compile(u'end\="([0-9:\.]*)')
+    start_re = re.compile(r'begin\="([0-9:\.]*)')
+    end_re = re.compile(r'end\="([0-9:\.]*)')
     content_re = re.compile(r'\">(.*)</p>', re.DOTALL)
 
     # some span tags are used for italics, we'll replace them by <i> and </i>,
     # which is the standard for .srt files. We ignore all other uses.
     cursive_ids = xml_get_cursive_style_ids(text)
-    span_id_re = re.compile(u'(<span style=\"([a-zA-Z0-9_.]+)\">)+')
-    span_end_re = re.compile(u'(</span>)+')
-    br_re = re.compile(u'(<br\s*\/?>)+')
+    span_id_re = re.compile(r'(<span style=\"([a-zA-Z0-9_.]+)\">)+')
+    span_end_re = re.compile(r'(</span>)+')
+    br_re = re.compile(r'(<br\s*\/?>)+')
     fmt_t = True
     for s in sub_lines:
         s, has_cursive = xml_cleanup_spans_start(
