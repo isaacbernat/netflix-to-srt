@@ -78,7 +78,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
 ### Using Python
-- [Get python](https://www.python.org/downloads/) (tested under python 2.7, 3.3 and newer). *If you have mac or linux you may skip this step*
+- [Get python](https://www.python.org/downloads/) (Python 3.6+ or newer (released 2016) is required. Older versions were compatible with Python 2.7 but it's not supported anymore). *If you have mac or linux you may skip this step*
 - Clone this repository or [download it as a ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip) or [download `to_srt.py` file](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
 - Run the script in the terminal (type `python to_srt.py` or `python3 to_srt.py` from the terminal on the folder you have `to_srt.py`)
   - Copy your subtitle files in the same directory as `to_srt.py`

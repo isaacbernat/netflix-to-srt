@@ -1,0 +1,26 @@
+<tt xmlns="http://www.w3.org/ns/ttml" xmlns:nttm="http://www.netflix.com/ns/ttml#metadata" xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling" ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/imsc1.1/text" ttp:tickRate="10000000" ttp:timeBase="media" xml:lang="de">
+<head>
+<metadata nttm:movieID="80226514" nttm:packageID="1495546" nttm:schemaVersion="0" nttm:textType="CC" nttm:uuid="4b19a2ae-f30e-4ae9-a343-69e4a9977036"/>
+<styling>
+<initial tts:backgroundColor="transparent" tts:color="white" tts:displayAlign="after" tts:extent="80.000% 80.000%" tts:fontSize="6.000rh" tts:opacity="1.000" tts:origin="10.000% 10.000%" tts:showBackground="whenActive" tts:textAlign="center" tts:textOutline="black 0.300rh" tts:writingMode="lrtb"/>
+<style xml:id="style0" tts:fontWeight="normal"/>
+<style xml:id="style1" tts:fontStyle="italic" tts:fontWeight="normal"/>
+</styling>
+<layout>
+<region xml:id="region0" tts:displayAlign="after" tts:extent="80.000% 80.000%" tts:origin="10.000% 10.000%"/>
+<region xml:id="region1" tts:displayAlign="before" tts:extent="80.000% 80.000%" tts:origin="10.000% 10.000%"/>
+</layout>
+</head>
+<body>
+<div>
+<p xml:id="subtitle2" begin="108450000t" end="140050000t" region="region0" style="style0">
+[Mädchen] Lisa, bist du wach?
+<br/>
+Komm mal runter!
+</p>
+<p xml:id="subtitle480" begin="17830450000t" end="17863250000t" region="region0" style="style0">
+<span style="style1">♪ Hear me, no one sees me, no one ♪</span>
+</p>
+</div>
+</body>
+</tt>
