@@ -207,6 +207,12 @@ function getVttStyles(text) {  // just using it for color ATM
     return styles;
 }
 
+function decodeHtml(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 function xmlToSrt(text) {
     function appendSubs(start, end, prevContent, formatTime) {
         subs.push({
@@ -217,19 +223,26 @@ function xmlToSrt(text) {
     }
 
     const displayAlignBefore = xmlIdDisplayAlignBefore(text);
+
+    // 1. Find all <p> tags (including multi-line)
     const pTagRe = /<p\s[^>]*begin=[^>]*>[\s\S]*?<\/p>/g;
     const subMatches = text.match(pTagRe) || [];
+
     const subs = [];
     let prevTime = { start: 0, end: 0 };
     let prevContent = [];
     let start = '';
     let end = '';
+
     const startRe = /begin="([0-9:.]*)/;
     const endRe = /end="([0-9:.]*)/;
+
     const cursiveIds = xmlGetCursiveStyleIds(text);
+
     const spanIdRe = /<span style="([a-zA-Z0-9_.]+)">+/g;
     const spanEndRe = /<\/span>+/g;
-    const brRe = /(<br\s*\/?>)+/g; // Global flag needed for replaceAll behavior
+    const brRe = /(<br\s*\/?>)+/g;
+
     let fmtT = true;
 
     for (let s of subMatches) {
@@ -247,21 +260,17 @@ function xmlToSrt(text) {
         const contentMatch = s.match(/>(.*)<\/p>/);
         let content = contentMatch ? contentMatch[1] : '';
 
-        // Handle Line Breaks (<br/>)
-        if (content.match(brRe)) {
-            content = content.replace(brRe, "\n");
+        // Handle <br/>
+        const brMatch = content.match(brRe);
+        if (brMatch) {
+            content = content.split(brMatch[0]).join("\n");
         }
 
         // Handle Spans (Italics) closing tags
         content = xmlCleanupSpansEnd(spanEndRe, content, hasCursive);
 
-        // HTML Entity Decoding (e.g. &quot; -> ") and formatting
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, 'text/html');
-        const serializer = new XMLSerializer();
-        const serialized = serializer.serializeToString(doc.body);
-        // Remove the <body> wrapper added by the serializer
-        content = serialized.replace(/^<body[^>]*>/, '').replace(/<\/body>$/, '');
+        // Decode HTML Entities
+        content = decodeHtml(content);
 
         // Extract Time
         const prevStart = prevTime.start;
@@ -278,6 +287,7 @@ function xmlToSrt(text) {
             start = start.replace(".", ",");
             end = end.replace(".", ",");
         }
+
         if ((prevStart === start && prevTime.end === end) || !prevStart) {
             prevTime = { start: start, end: end };
             prevContent.push(content);
@@ -287,6 +297,7 @@ function xmlToSrt(text) {
         prevTime = { start: start, end: end };
         prevContent = [content];
     }
+
     // Append the last subtitle
     if (start && end) {
         appendSubs(start, end, prevContent, fmtT);
