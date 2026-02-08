@@ -1,0 +1,15 @@
+    <p begin="100" end="200">
+        Hi there.
+        <br/>
+        How are you?
+    </p>
+
+    <p begin="200" end="300">
+        With empty lines.
+        <br/>
+        Really?
+        <br/>
+        Yes, a lot of them.
+        <br/>
+        Oh, dear!
+    </p>

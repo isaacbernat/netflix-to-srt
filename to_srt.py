@@ -182,7 +182,9 @@ def xml_to_srt(text):
     span_end_re = re.compile(r'(</span>)+')
     br_re = re.compile(r'(<br\s*\/?>)+')
     fmt_t = True
+    whitespace_re = re.compile(r'[\r\n\t]+')
     for s in sub_lines:
+        s = re.sub(whitespace_re, ' ', s)
         s, has_cursive = xml_cleanup_spans_start(
             span_id_re, cursive_ids, s)
 
