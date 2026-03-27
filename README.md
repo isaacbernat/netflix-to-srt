@@ -78,7 +78,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 - Enjoy! (And **star the repo ⭐** if you liked it ;D)
 
 ### Using Python
-- [Get python](https://www.python.org/downloads/) (Python 3.6+ or newer (released 2016) is required. Older versions were compatible with Python 2.7 but it's not supported anymore). *If you have mac or linux you may skip this step*
+- [Get python](https://www.python.org/downloads/) . Tested on Python 3.10+ and newer (3.10 is [the oldest still supported](https://devguide.python.org/versions/) . Older versions were compatible with Python 2.7 but it's not supported anymore. *If you have mac or linux you may skip this step*
 - Clone this repository or [download it as a ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip) or [download `to_srt.py` file](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
 - Run the script in the terminal (type `python to_srt.py` or `python3 to_srt.py` from the terminal on the folder you have `to_srt.py`)
   - Copy your subtitle files in the same directory as `to_srt.py`
@@ -119,11 +119,16 @@ If you like this project, please **star the repository ⭐**. It's free and it h
 
 Similarly, adjusting timestamps in 50ms increments was inconvenient using VLC's hotkeys (G, H and/or J) for large mismatches (e.g. 60 seconds because openings or summaries), so I added the `-d DELAY_MS` parameter so I could "advance" all the subtitles lines easily.
 
-Requiring access to a terminal with Python was a limiting factor for many users. I added the javascript version so it may be run on any web browser. Both versions pass all tests, but the Python version is the original one. The javascript version is a port which was migrated with AI assistace, so it's less idiomatic.
+Requiring access to a terminal with Python was a limiting factor for many users. I added the javascript version so it may be run on any web browser. The Python version includes a unittest suite (see [Testing](#testing)). The javascript version is a port which was migrated with AI assistance, so it may be less idiomatic.
+
+## Testing
+Run the test suite with verbose output (use `python3` instead of `python` depending on your OS alias)):
+```bash
+python -m unittest discover -s tests -v
+```
 
 ## TODOs
 - More robust file parsing than just some quick and dirty regexes.
-- Real tests. The way to "test" it now is by running `python to_srt.py -i samples -o samples` from the the project's root directory and check the `.srt` results (and with more params for `/delay` tests...).
 - Create a pip package for this.
 - More sources/providers/screenshots in [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) section, so it's easier to follow and covers more use cases.
 
