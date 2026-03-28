@@ -1,3 +1,4 @@
+if (typeof document !== 'undefined') {
 document.getElementById('convertButton').addEventListener('click', function() {
     const fileInput = document.getElementById('fileInput');
     const timeshiftMilliseconds = parseInt(document.getElementById('timeshift').value, 10);
@@ -32,6 +33,7 @@ function setTheme() {
     }
 }
 setTheme();
+}
 
 function leadingZeros(value, digits = 2) {
     value = '000000' + String(value);
@@ -208,9 +210,34 @@ function getVttStyles(text) {  // just using it for color ATM
 }
 
 function decodeHtml(html) {
-    const txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
+    const entities = {
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&#39;': "'",
+        '&nbsp;': ' ',
+        '&apos;': "'",
+        '&ndash;': '\u2013',
+        '&mdash;': '\u2014',
+        '&hellip;': '\u2026',
+        '&copy;': '\u00A9',
+        '&reg;': '\u00AE',
+        '&trade;': '\u2122',
+        '&laquo;': '\u00AB',
+        '&raquo;': '\u00BB',
+        '&lsquo;': '\u2018',
+        '&rsquo;': '\u2019',
+        '&ldquo;': '\u201C',
+        '&rdquo;': '\u201D',
+    };
+    let result = html;
+    for (const [entity, char] of Object.entries(entities)) {
+        result = result.replace(new RegExp(entity, 'g'), char);
+    }
+    result = result.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code, 10)));
+    result = result.replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCharCode(parseInt(code, 16)));
+    return result;
 }
 
 function xmlToSrt(text) {
@@ -306,4 +333,22 @@ function xmlToSrt(text) {
     // Format final SRT string
     const lines = subs.map((sub, index) => `${index + 1}\n${sub.start_time} --> ${sub.end_time}\n${sub.content}\n`);
     return lines.join("\n");
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        toSrt,
+        xmlToSrt,
+        vttToSrt,
+        shiftSrtTimestamp,
+        convertTime,
+        decodeHtml,
+        leadingZeros,
+        xmlIdDisplayAlignBefore,
+        xmlGetCursiveStyleIds,
+        xmlCleanupSpansStart,
+        xmlCleanupSpansEnd,
+        convertVttTime,
+        getVttStyles,
+    };
 }
