@@ -122,9 +122,16 @@ Similarly, adjusting timestamps in 50ms increments was inconvenient using VLC's 
 Requiring access to a terminal with Python was a limiting factor for many users. I added the javascript version so it may be run on any web browser. The Python version includes a unittest suite (see [Testing](#testing)). The javascript version is a port which was migrated with AI assistance, so it may be less idiomatic.
 
 ## Testing
-Run the test suite with verbose output (use `python3` instead of `python` depending on your OS alias)):
+### Python tests
+Run the Python test suite with verbose output (use `python3` instead of `python` depending on your OS alias):
 ```bash
 python -m unittest discover -s tests -v
+```
+
+### Node.js tests
+Run the JavaScript test suite (tests the web version in `web/script.js`):
+```bash
+node --test tests/test_to_srt.js
 ```
 
 ## TODOs
