@@ -232,11 +232,14 @@ function decodeHtml(html) {
         '&rdquo;': '\u201D',
     };
     let result = html;
-    for (const [entity, char] of Object.entries(entities)) {
-        result = result.replace(new RegExp(entity, 'g'), char);
-    }
-    result = result.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code, 10)));
-    result = result.replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCharCode(parseInt(code, 16)));
+    const entityRegex = /&[a-z]+;|&#\d+;|&#x[0-9a-f]+;/gi;
+        result = result.replace(entityRegex, (match) => {
+            const lowerMatch = match.toLowerCase();
+            if (entities[lowerMatch]) return entities[lowerMatch];
+            if (lowerMatch.startsWith('&#x')) return String.fromCharCode(parseInt(match.slice(3, -1), 16));
+            if (lowerMatch.startsWith('&#' )) return String.fromCharCode(parseInt(match.slice(2, -1), 10));
+            return match;
+        });
     return result;
 }
 

@@ -18,7 +18,6 @@ describe('toSrt conversion tests', () => {
             const ext = inputFile.substring(inputFile.lastIndexOf('.')).toLowerCase();
 
             if (!inputExtensions.has(ext)) continue;
-            if (inputFile.includes('ep2')) continue;
 
             const expectedSrt = join(SAMPLES_DIR, base + '.srt');
             const inputPath = join(SAMPLES_DIR, inputFile);
