@@ -8,6 +8,8 @@ on:
 jobs:
   sync-website:
     runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.check-changes.outputs.has_changes }}
     steps:
       - name: Checkout Website Repo
         uses: actions/checkout@v4
@@ -22,27 +24,36 @@ jobs:
           repository: isaacbernat/netflix-to-srt
           path: dev_repo
 
+      - name: Check for Changes
+        id: check-changes
+        run: |
+          cp -r dev_repo/web/* website/
+          cd website
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Set up SSH Key
+        if: steps.check-changes.outputs.has_changes == 'true'
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          eval $(ssh-agent -s) # Start the SSH agent
-          ssh-add ~/.ssh/id_rsa # Add the key to the agent
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/id_rsa
           export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no"
 
       - name: Configure Git
+        if: steps.check-changes.outputs.has_changes == 'true'
         run: |
           cd website
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
 
-      - name: Copy Web Files
-        run: |
-          cd dev_repo
-          cp -r web/* ../website/
-
       - name: Commit and Push Changes to Website Repo
+        if: steps.check-changes.outputs.has_changes == 'true'
         run: |
           cd website
           git add .
