@@ -7,12 +7,12 @@ Or follow the instructions below:
 </div>
 
 1. [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) (`.xml` dfxp or `.vtt` files from Netflix, YouTube... streaming media services).
-    - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix)
-    - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube)
+    - [From Netflix](https://github.com/isaacbernat/netflix-to-srt#from-netflix).
+    - [From YouTube](https://github.com/isaacbernat/netflix-to-srt#from-youtube).
 2. [Convert them](https://github.com/isaacbernat/netflix-to-srt#convert-them-into-srt) into `.srt` files (and/or shift timestamps).
-    - [Using your web browser](https://github.com/isaacbernat/netflix-to-srt#using-your-web-browser) (easiest)
-    - [Using Python](https://github.com/isaacbernat/netflix-to-srt#using-python) (better for big batches and automation)
-3. [Star this repo ⭐](https://github.com/isaacbernat/netflix-to-srt#star-this-repo)
+    - [Using your web browser](https://github.com/isaacbernat/netflix-to-srt#using-your-web-browser) (easiest).
+    - [Using Python](https://github.com/isaacbernat/netflix-to-srt#using-python) (better for big batches and automation).
+3. [Star this repo ⭐](https://github.com/isaacbernat/netflix-to-srt#star-this-repo).
 
 ## Get the subtitles
 ### From Netflix
@@ -60,7 +60,7 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 ### From YouTube
 > **Note:** One must ensure subtitles in the YouTube video (captions) are enabled before running commands below. 
 ### Get subtitles from YouTube: method 1
-- Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux)
+- Install [youtube-dl](https://github.com/ytdl-org/youtube-dl) (available for Windows, Mac and Linux).
 - Download subs from the YouTube URL you like. E.g. `youtube-dl --all-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
 - Subtitles should be downloaded in the same folder were the command was ran. E.g. `NameOfTheVideo VHNfvFOBC0A.ca.vtt, NameOfTheVideo VHNfvFOBC0A.tlh.vtt`
 - If you are missing a language, check that it's actually available. E.g. `youtube-dl --list-subs "https://www.youtube.com/watch?v=VHNfvFOBC0A"`
@@ -73,19 +73,20 @@ You need FireFox and AdblockPlus Add-On. *not tested on other browsers*
 
 ## Convert them into .srt
 ### Using your web browser
-- Go to [netflix-to-srt.pages.dev](https://netflix-to-srt.pages.dev) (or alternatively [isaacbernat.github.io/netflix-to-srt-web](https://isaacbernat.github.io/netflix-to-srt-web))
-- Upload the subtitles and click convert
-- Enjoy! (And **star the repo ⭐** if you liked it ;D)
+- Go to [netflix-to-srt.pages.dev](https://netflix-to-srt.pages.dev) (or alternatively [isaacbernat.github.io/netflix-to-srt-web](https://isaacbernat.github.io/netflix-to-srt-web)).
+- Upload the subtitles and click "convert".
+- Enjoy! (And **star the repo ⭐** if you liked it ;D).
 
 ### Using Python
-- [Get python](https://www.python.org/downloads/) . Tested on Python 3.10+ and newer (3.10 is [the oldest still supported](https://devguide.python.org/versions/) . Older versions were compatible with Python 2.7 but it's not supported anymore. *If you have mac or linux you may skip this step*
-- Clone this repository or [download it as a ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip) or [download `to_srt.py` file](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py)
-- Run the script in the terminal (type `python to_srt.py` or `python3 to_srt.py` from the terminal on the folder you have `to_srt.py`)
-  - Copy your subtitle files in the same directory as `to_srt.py`
-    - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations
-  - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one
-- *Optional:* Use `-d DELAY_MS` parameter when running the script to delay all the timestamps by the given number of milliseconds. Negative values shift timestamps backwards. Example: `python to_srt.py -i samples/delays -o samples/delays -d -1500` will take all the eligible files in `samples/delays` and shift the resulting `.srt` subtitles to be 1.5 seconds earlier than the original version
-- Enjoy! (And **star the repo ⭐** if you liked it ;D)
+- [Get python](https://www.python.org/downloads/) (*If you have mac or linux you may skip this step*).
+- Clone this repository or [download it as a ZIP file](https://github.com/isaacbernat/netflix-to-srt/archive/refs/heads/master.zip) or [download `to_srt.py` file](https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/to_srt.py) .
+- Run the script in the terminal (type `python to_srt.py` or `python3 to_srt.py` from the terminal on the folder you have `to_srt.py`).
+  - Copy your subtitle files in the same directory as `to_srt.py`.
+    - Or use `-i INPUT_PATH` and `-o OUTPUT_PATH` for custom file locations.
+  - All `.xml` and `.vtt` files in the input directory will generate a converted `.srt` file on the output one.
+- *Optional:* Use `-d DELAY_MS` parameter when running the script to delay all the timestamps by the given number of milliseconds. Negative values shift timestamps backwards. Example: `python to_srt.py -i samples/delays -o samples/delays -d -1500` will take all the eligible files in `samples/delays` and shift the resulting `.srt` subtitles to be 1.5 seconds earlier than the original version.
+- Enjoy! (And **star the repo ⭐** if you liked it ;D).
+- *Note:* Tested on Python 3.10+ and newer (3.10 is [the oldest still supported](https://devguide.python.org/versions/)). Previous versions were compatible with Python 2.7 but it's not supported anymore. 
 
 ## Star this repo
 If you like this project, please **star the repository ⭐**. It's free and it helps get visibility and future improvements.
@@ -100,26 +101,19 @@ If you like this project, please **star the repository ⭐**. It's free and it h
 - Thanks for your contribution!
 
 <picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_dark.png"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_light.png"
-  />
   <img
     alt="Star History Chart"
-    src="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/stargazers20250317_light.png"
+    src="https://raw.githubusercontent.com/isaacbernat/netflix-to-srt/master/images/star-history-2026330.png"
   />
 </picture>
 
+
 ## Why this repository?
-[VideoLAN's VLC media player](https://www.videolan.org/vlc/) could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same. Other features like font colors and styles are partially supported. Feel free to [create an Issue](https://github.com/isaacbernat/netflix-to-srt/issues) or Pull Request for more.
+[VideoLAN's VLC media player](https://www.videolan.org/vlc/) could not reproduce that kind of xml subtitles and I could not find any tool that could easily transform the xml files to a suitable format (e.g. SubRip (`.srt`)) in Linux or Mac, so I wrote this script and decided to share. I got a request for WebVTT (`.vtt`) and did the same. Other features like font colors and styles are partially supported. Feel free to [create an Issue](https://github.com/isaacbernat/netflix-to-srt/issues) or Pull Request with improvement ideas.
 
 Similarly, adjusting timestamps in 50ms increments was inconvenient using VLC's hotkeys (G, H and/or J) for large mismatches (e.g. 60 seconds because openings or summaries), so I added the `-d DELAY_MS` parameter so I could "advance" all the subtitles lines easily.
 
-Requiring access to a terminal with Python was a limiting factor for many users. I added the javascript version so it may be run on any web browser. The Python version includes a unittest suite (see [Testing](#testing)). The javascript version is a port which was migrated with AI assistance, so it may be less idiomatic.
+Requiring access to a terminal with Python installed was a limiting factor for many users. I added the javascript version so it may be run on any web browser. The JavaScript version is an isomorphic port optimized for zero-dependency execution in both browsers and Node.js environments.
 
 ## Testing
 ### Python tests
@@ -133,11 +127,6 @@ Run the JavaScript test suite (tests the web version in `web/script.js`):
 ```bash
 node --test tests/test_to_srt.js
 ```
-
-## TODOs
-- More robust file parsing than just some quick and dirty regexes.
-- Create a pip package for this.
-- More sources/providers/screenshots in [Get the subtitles](https://github.com/isaacbernat/netflix-to-srt#get-the-subtitles) section, so it's easier to follow and covers more use cases.
 
 ## Note
 In no way I am encouraging any kind of illegal activity. Please know your local laws and ask for written permissions from content owners (e.g. Netflix, YouTube) when necessary.
