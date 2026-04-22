@@ -112,27 +112,29 @@ def vtt_to_srt(text):
     if not text.startswith(u"\ufeffWEBVTT") and not text.startswith(u"WEBVTT"):
         raise Exception(".vtt format must start with WEBVTT, wrong file?")
     styles = get_vtt_styles(text)
-    style_tag_re = re.compile(r'<c\.(.*)>(.*)</c>')
+    style_tag_re = re.compile(r'<c\.([^>]+)>(.*?)</c[^>]*>')
+
+    def replace_style(match):
+        class_name = match.group(1).split(".")[0]
+        content = match.group(2)
+        color = styles.get(class_name)
+        if color:
+            return r'<font color="{}">{}</font>'.format(color, content)
+        return content
 
     lines = []
     current_sub_line = []
     for line in text.split("\n"):
         if current_sub_line:
             if line:
-                style_tag = re.search(style_tag_re, line)
-                if style_tag:
-                    line = style_tag.group(2)  # line is just the text part
-                    color = styles.get(style_tag.group(1).split(".")[0])
-                    if color:
-                        line = r'<font color="{}">{}</font>'.format(
-                            color, line)
+                line = style_tag_re.sub(replace_style, line)
                 current_sub_line.append(line)
             else:
                 lines.append("\n".join(current_sub_line) + "\n\n")
                 current_sub_line = []
 
         elif " --> " in line:
-            current_sub_line = [convert_vtt_time(line)]
+            current_sub_line =[convert_vtt_time(line)]
     if current_sub_line:
         lines.append("\n".join(current_sub_line))
 
