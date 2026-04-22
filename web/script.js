@@ -159,21 +159,21 @@ function vttToSrt(text) {
         throw new Error(".vtt format must start with WEBVTT, wrong file?");
     }
     const styles = getVttStyles(text);
-    const styleTagRe = /<c\.(.*)>(.*)<\/c>/;
+    const styleTagRe = /<c\.([^>]+)>(.*?)<\/c[^>]*>/g;
 
     const lines = [];
     let currentSubLine = [];
     text.split("\n").forEach((line) => {
         if (currentSubLine.length) {
             if (line) {
-                const styleTag = line.match(styleTagRe);
-                if (styleTag) {
-                    line = styleTag[2];  // line is just the text part
-                    const color = styles[styleTag[1].split(".")[0]];
+                line = line.replace(styleTagRe, (match, className, content) => {
+                    const cleanClassName = className.split(".")[0];
+                    const color = styles[cleanClassName];
                     if (color) {
-                        line = `<font color="${color}">${line}</font>`;
+                        return `<font color="${color}">${content}</font>`;
                     }
-                }
+                    return content;
+                });
                 currentSubLine.push(line);
             } else {
                 lines.push(currentSubLine.join("\n") + "\n\n");
